@@ -299,12 +299,23 @@
 
     .btn-primary {
       color: white;
-      background: linear-gradient(135deg, var(--violet), #5a49d8);
-      box-shadow: 0 12px 28px rgba(124,92,255,.3);
-      transition: .22s ease;
+      background: linear-gradient(135deg, #8f6dff 0%, #6f5df7 35%, #4b9cf7 100%);
+      box-shadow:
+        0 18px 34px rgba(124,92,255,.35),
+        0 0 0 1px rgba(255,255,255,.10) inset,
+        0 0 22px rgba(124,92,255,.25);
+      border: 1px solid rgba(255,255,255,.18);
+      font-weight: 900;
+      letter-spacing: -.02em;
+      transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+      filter: saturate(1.08);
     }
 
-    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 38px rgba(124,92,255,.42), 0 0 28px rgba(124,92,255,.24);
+      filter: brightness(1.06) saturate(1.15);
+    }
 
     .btn-ghost {
       color: white;
