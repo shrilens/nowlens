@@ -3613,6 +3613,7 @@ function updateVisitorCounter() {
   const counter = document.getElementById('visitorCount');
   if (!counter) return;
 
+  const sessionKey = 'nowlensVisitorSession';
   const fallbackKey = 'nowlensManualVisitorCount';
 
   const setCount = (value) => {
@@ -3623,6 +3624,16 @@ function updateVisitorCounter() {
     const fallback = Number(localStorage.getItem(fallbackKey) || 0);
     setCount(fallback);
   };
+
+  if (localStorage.getItem(sessionKey)) {
+    fetch('https://api.countapi.xyz/get/nowlens-prod/visits')
+      .then(response => response.ok ? response.json() : Promise.reject())
+      .then(data => setCount(data.value))
+      .catch(loadLocalFallback);
+    return;
+  }
+
+  localStorage.setItem(sessionKey, '1');
 
   fetch('https://api.countapi.xyz/hit/nowlens-prod/visits')
     .then(response => response.ok ? response.json() : Promise.reject())
