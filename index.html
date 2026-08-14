@@ -3,1492 +3,562 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>ServiceNow AI Learning Academy</title>
+  <meta name="description" content="NowLens - Practical ServiceNow ITOM, ITAM and Now Assist learning paths." />
+  <title>NowLens | ITOM, ITAM & Now Assist Learning</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --primary: #032d42;
-      --secondary: #62d84e;
-      --light-green: #e9f9e5;
-      --background: #f4f7f9;
-      --white: #ffffff;
+      --primary-2: #0b4f6c;
+      --accent: #62d84e;
+      --accent-soft: #eaf9e7;
+      --bg: #f5f7f9;
+      --card: #ffffff;
       --text: #1f2937;
       --muted: #6b7280;
       --border: #e5e7eb;
-      --blue: #2563eb;
-      --warning: #f59e0b;
-      --success: #16a34a;
-      --danger: #dc2626;
+      --itom: #0f6f8f;
+      --itam: #7c3aed;
+      --ai: #0f9d58;
     }
 
+    html { scroll-behavior: smooth; }
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--background);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
       color: var(--text);
+      line-height: 1.5;
     }
-
-    /* ---------------- HEADER ---------------- */
 
     header {
-      background: var(--primary);
-      color: white;
-      padding: 18px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-    }
-
-    .logo {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 12px;
-    }
-
-    .logo-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      background: var(--secondary);
-      color: var(--primary);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-weight: bold;
-      font-size: 22px;
-    }
-
-    .logo h2 {
-      font-size: 20px;
-    }
-
-    nav {
-      display: flex;
-      gap: 25px;
-    }
-
-    nav a {
+      gap: 24px;
+      padding: 16px 5%;
       color: white;
-      text-decoration: none;
-      font-size: 14px;
-      cursor: pointer;
+      background: rgba(3,45,66,.98);
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
 
-    nav a:hover {
-      color: var(--secondary);
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark {
+      width: 42px; height: 42px; display: grid; place-items: center;
+      border-radius: 12px; background: var(--accent); color: var(--primary);
+      font-weight: 900;
     }
+    .brand h2 { font-size: 20px; line-height: 1.1; }
+    .brand small { display: block; color: #bcd0da; font-size: 11px; margin-top: 3px; }
 
-    /* ---------------- HERO ---------------- */
+    nav { display: flex; gap: 24px; align-items: center; }
+    nav a { color: white; text-decoration: none; font-size: 14px; cursor: pointer; }
+    nav a:hover { color: var(--accent); }
 
     .hero {
-      padding: 70px 5%;
-      background:
-        linear-gradient(
-          110deg,
-          rgba(3, 45, 66, 1),
-          rgba(3, 45, 66, 0.92)
-        );
-      color: white;
+      padding: 78px 5%;
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      align-items: center;
+      grid-template-columns: 1.35fr .85fr;
       gap: 60px;
+      align-items: center;
+      color: white;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(98,216,78,.18), transparent 28%),
+        linear-gradient(120deg, #032d42 0%, #06445f 60%, #0b4f6c 100%);
+    }
+
+    .eyebrow {
+      display: inline-flex; margin-bottom: 18px; padding: 7px 12px;
+      border: 1px solid rgba(255,255,255,.18); border-radius: 999px;
+      color: #d9e7ed; font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .08em;
     }
 
     .hero h1 {
-      font-size: 48px;
-      line-height: 1.15;
-      margin-bottom: 20px;
+      max-width: 780px;
+      font-size: clamp(40px, 5vw, 64px);
+      line-height: 1.04;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
     }
+    .hero h1 span { color: var(--accent); }
+    .hero p { max-width: 720px; color: #d7e3e9; font-size: 17px; line-height: 1.75; }
 
-    .hero h1 span {
-      color: var(--secondary);
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    button { border: 0; cursor: pointer; font: inherit; font-weight: 700; border-radius: 9px; padding: 13px 18px; }
+    .btn-primary { background: var(--accent); color: var(--primary); }
+    .btn-secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,.35); }
+
+    .progress-card {
+      background: white; color: var(--text); padding: 28px; border-radius: 18px;
+      box-shadow: 0 24px 60px rgba(0,0,0,.18);
     }
+    .progress-card h3 { color: var(--primary); margin-bottom: 18px; }
+    .progress-row { display: flex; justify-content: space-between; gap: 20px; font-size: 13px; margin-bottom: 8px; }
+    .bar { height: 11px; background: #e8edf0; border-radius: 999px; overflow: hidden; }
+    .bar > div { height: 100%; width: 0%; background: var(--accent); transition: width .35s ease; }
+    .stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 22px; }
+    .stat { padding: 14px 8px; background: #f7f9fa; border-radius: 10px; text-align: center; }
+    .stat strong { display: block; color: var(--primary); font-size: 20px; }
+    .stat span { color: var(--muted); font-size: 11px; }
 
-    .hero p {
-      max-width: 650px;
-      line-height: 1.7;
-      color: #d7e3e9;
-      margin-bottom: 30px;
-      font-size: 17px;
+    .container { width: 90%; max-width: 1280px; margin: 0 auto; }
+    .tracks { margin-top: -30px; position: relative; z-index: 4; }
+    .track-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .track-card {
+      background: white; border: 1px solid var(--border); border-radius: 16px; padding: 22px;
+      box-shadow: 0 12px 28px rgba(15,23,42,.06);
     }
+    .track-card h3 { color: var(--primary); margin: 8px 0; }
+    .track-card p { color: var(--muted); font-size: 13px; }
+    .track-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+    .track-itom { color: var(--itom); }
+    .track-itam { color: var(--itam); }
+    .track-ai { color: var(--ai); }
 
-    .hero-buttons {
-      display: flex;
-      gap: 15px;
+    section.main { padding: 64px 0; }
+    .section-head { margin-bottom: 28px; }
+    .section-head h2 { color: var(--primary); font-size: 34px; letter-spacing: -1px; }
+    .section-head p { color: var(--muted); margin-top: 8px; max-width: 820px; }
+
+    .toolbar { display: flex; gap: 14px; justify-content: space-between; flex-wrap: wrap; margin-bottom: 28px; }
+    .search { flex: 1; min-width: 250px; }
+    .search input {
+      width: 100%; padding: 13px 15px; background: white; border: 1px solid var(--border);
+      border-radius: 9px; outline: none;
     }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-btn { background: white; border: 1px solid var(--border); color: var(--text); padding: 11px 15px; }
+    .filter-btn.active { background: var(--primary); color: white; }
 
-    button {
-      border: none;
-      cursor: pointer;
-      border-radius: 8px;
-      padding: 13px 20px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .primary-btn {
-      background: var(--secondary);
-      color: var(--primary);
-    }
-
-    .secondary-btn {
-      background: transparent;
-      color: white;
-      border: 1px solid rgba(255,255,255,.5);
-    }
-
-    .hero-card {
-      background: white;
-      color: var(--text);
-      border-radius: 18px;
-      padding: 30px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-    }
-
-    .hero-card h3 {
-      margin-bottom: 20px;
-      color: var(--primary);
-    }
-
-    .progress-container {
-      margin-top: 15px;
-    }
-
-    .progress-info {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 12px;
-      border-radius: 20px;
-      background: #e5e7eb;
-      overflow: hidden;
-    }
-
-    .progress {
-      width: 0%;
-      height: 100%;
-      background: var(--secondary);
-      transition: width .4s ease;
-    }
-
-    .hero-stats {
-      margin-top: 25px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      text-align: center;
-      gap: 10px;
-    }
-
-    .hero-stat {
-      background: #f7fafb;
-      padding: 15px 8px;
-      border-radius: 10px;
-    }
-
-    .hero-stat strong {
-      display: block;
-      color: var(--primary);
-      font-size: 20px;
-    }
-
-    .hero-stat span {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    /* ---------------- MAIN ---------------- */
-
-    .container {
-      width: 90%;
-      max-width: 1250px;
-      margin: 50px auto;
-    }
-
-    .section-header {
-      margin-bottom: 30px;
-    }
-
-    .section-header h2 {
-      font-size: 32px;
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
-
-    .section-header p {
-      color: var(--muted);
-    }
-
-    /* ---------------- SEARCH ---------------- */
-
-    .toolbar {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-    }
-
-    .search-box {
-      flex: 1;
-      min-width: 250px;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 14px 16px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      outline: none;
-      background: white;
-    }
-
-    .filters {
-      display: flex;
-      gap: 8px;
-    }
-
-    .filter-btn {
-      background: white;
-      border: 1px solid var(--border);
-      color: var(--text);
-    }
-
-    .filter-btn.active {
-      background: var(--primary);
-      color: white;
-    }
-
-    /* ---------------- COURSE CARDS ---------------- */
-
-    .course-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
+    .course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
     .course-card {
-      background: white;
-      border-radius: 15px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      transition: .25s;
+      background: white; border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+      transition: transform .2s ease, box-shadow .2s ease;
     }
-
-    .course-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+    .course-card:hover { transform: translateY(-4px); box-shadow: 0 16px 35px rgba(15,23,42,.08); }
+    .course-top {
+      min-height: 132px; padding: 22px; display: flex; justify-content: space-between; align-items: flex-start;
+      color: white; background: linear-gradient(135deg, #032d42, #0b5978);
     }
-
-    .course-image {
-      height: 150px;
-      background: linear-gradient(135deg, #032d42, #14617c);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 52px;
+    .course-icon { font-size: 38px; }
+    .course-track {
+      padding: 5px 9px; border-radius: 999px; background: rgba(255,255,255,.15);
+      font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em;
     }
+    .course-body { padding: 22px; }
+    .course-body h3 { color: var(--primary); margin-bottom: 9px; font-size: 19px; }
+    .course-body p { color: var(--muted); font-size: 13px; line-height: 1.65; min-height: 64px; }
+    .course-meta { display: flex; justify-content: space-between; gap: 12px; margin: 17px 0; color: var(--muted); font-size: 12px; }
+    .course-btn { width: 100%; background: var(--primary); color: white; }
+    .course-btn:hover { background: var(--primary-2); }
 
-    .course-content {
-      padding: 22px;
+    .path {
+      margin: 10px 0 70px; padding: 38px; color: white; background: var(--primary); border-radius: 20px;
     }
-
-    .tag {
-      display: inline-block;
-      background: var(--light-green);
-      color: #287b1c;
-      font-size: 11px;
-      padding: 5px 10px;
-      border-radius: 20px;
-      margin-bottom: 12px;
-      font-weight: bold;
+    .path h2 { margin-bottom: 8px; }
+    .path > p { color: #bdd0d8; margin-bottom: 28px; }
+    .path-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 15px; }
+    .path-step { padding: 20px; background: rgba(255,255,255,.08); border-radius: 12px; }
+    .path-step span {
+      width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%;
+      background: var(--accent); color: var(--primary); font-weight: 900; margin-bottom: 12px;
     }
+    .path-step h4 { margin-bottom: 7px; }
+    .path-step p { color: #ccdae0; font-size: 12px; line-height: 1.6; }
 
-    .course-content h3 {
-      color: var(--primary);
-      margin-bottom: 10px;
-      font-size: 19px;
+    .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 400; }
+    .overlay.active { display: block; }
+    .drawer {
+      position: fixed; top: 0; right: -720px; width: 720px; max-width: 100%; height: 100vh;
+      background: white; z-index: 500; overflow-y: auto; transition: right .3s ease;
+      box-shadow: -18px 0 45px rgba(0,0,0,.18);
     }
+    .drawer.active { right: 0; }
+    .drawer-head { display: flex; justify-content: space-between; gap: 20px; padding: 28px; color: white; background: var(--primary); }
+    .drawer-head small { color: #c9d8de; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+    .drawer-head h2 { margin-top: 5px; }
+    .close { background: transparent; color: white; font-size: 26px; padding: 4px 8px; }
+    .drawer-body { padding: 30px; }
+    .drawer-body h3 { color: var(--primary); margin: 24px 0 10px; }
+    .drawer-body p { color: #4b5563; line-height: 1.75; }
+    .topic-list { display: grid; gap: 9px; margin-top: 14px; }
+    .topic { padding: 11px 13px; background: #f6f8f9; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; }
+    .note { margin-top: 22px; padding: 15px; border-left: 4px solid var(--accent); background: var(--accent-soft); border-radius: 6px; color: #234b22; font-size: 13px; }
+    .complete-btn { margin-top: 24px; background: var(--accent); color: var(--primary); }
 
-    .course-content p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-      min-height: 65px;
+    footer { background: #021f2d; color: #b8c9d1; padding: 34px 5%; text-align: center; font-size: 12px; }
+    footer strong { color: white; }
+
+    @media (max-width: 1000px) {
+      .hero { grid-template-columns: 1fr; }
+      .course-grid { grid-template-columns: repeat(2,1fr); }
+      .track-grid { grid-template-columns: 1fr; }
+      .path-grid { grid-template-columns: repeat(2,1fr); }
     }
-
-    .course-meta {
-      display: flex;
-      justify-content: space-between;
-      color: var(--muted);
-      font-size: 12px;
-      margin: 18px 0;
-    }
-
-    .course-btn {
-      width: 100%;
-      background: var(--primary);
-      color: white;
-    }
-
-    .course-btn:hover {
-      background: #06445f;
-    }
-
-    /* ---------------- LESSON PANEL ---------------- */
-
-    .lesson-panel {
-      position: fixed;
-      right: -650px;
-      top: 0;
-      height: 100vh;
-      width: 650px;
-      max-width: 100%;
-      background: white;
-      z-index: 500;
-      overflow-y: auto;
-      box-shadow: -10px 0 30px rgba(0,0,0,.18);
-      transition: right .3s ease;
-    }
-
-    .lesson-panel.active {
-      right: 0;
-    }
-
-    .lesson-header {
-      background: var(--primary);
-      color: white;
-      padding: 25px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .close-btn {
-      background: transparent;
-      padding: 5px;
-      color: white;
-      font-size: 24px;
-    }
-
-    .lesson-body {
-      padding: 30px;
-    }
-
-    .lesson-body h2,
-    .lesson-body h3 {
-      color: var(--primary);
-      margin: 20px 0 10px;
-    }
-
-    .lesson-body p {
-      line-height: 1.8;
-      color: #4b5563;
-      margin-bottom: 15px;
-    }
-
-    .lesson-body ul {
-      margin: 10px 0 20px 25px;
-      line-height: 1.9;
-    }
-
-    .code-box {
-      background: #111827;
-      color: #d1fae5;
-      padding: 18px;
-      border-radius: 10px;
-      overflow-x: auto;
-      margin: 20px 0;
-      font-family: monospace;
-      line-height: 1.6;
-    }
-
-    .complete-btn {
-      background: var(--secondary);
-      color: var(--primary);
-      margin-top: 20px;
-    }
-
-    /* ---------------- QUIZ ---------------- */
-
-    .quiz {
-      margin-top: 30px;
-      border-top: 1px solid var(--border);
-      padding-top: 25px;
-    }
-
-    .question {
-      margin-bottom: 25px;
-    }
-
-    .question strong {
-      display: block;
-      margin-bottom: 12px;
-    }
-
-    .option {
-      display: block;
-      background: #f8fafc;
-      padding: 12px;
-      margin-bottom: 8px;
-      border-radius: 7px;
-      cursor: pointer;
-    }
-
-    .option:hover {
-      background: #edf3f6;
-    }
-
-    .quiz-result {
-      margin-top: 15px;
-      font-weight: bold;
-    }
-
-    /* ---------------- LEARNING PATH ---------------- */
-
-    .learning-path {
-      background: var(--primary);
-      border-radius: 20px;
-      padding: 40px;
-      color: white;
-      margin-top: 60px;
-    }
-
-    .learning-path h2 {
-      margin-bottom: 30px;
-    }
-
-    .path-steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .path-step {
-      background: rgba(255,255,255,.08);
-      padding: 25px;
-      border-radius: 12px;
-    }
-
-    .path-number {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      background: var(--secondary);
-      color: var(--primary);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-    /* ---------------- FOOTER ---------------- */
-
-    footer {
-      margin-top: 70px;
-      background: #021f2d;
-      color: #b9c9d1;
-      padding: 35px 5%;
-      text-align: center;
-      font-size: 13px;
-    }
-
-    /* ---------------- OVERLAY ---------------- */
-
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.4);
-      z-index: 400;
-      display: none;
-    }
-
-    .overlay.active {
-      display: block;
-    }
-
-    /* ---------------- RESPONSIVE ---------------- */
-
-    @media (max-width: 950px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
-      .course-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .path-steps {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      nav {
-        display: none;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 36px;
-      }
-
-      .course-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .path-steps {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 650px) {
+      nav { display: none; }
+      .hero { padding-top: 54px; }
+      .course-grid, .path-grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- HEADER -->
-
-  <header>
-    <div class="logo">
-      <div class="logo-icon">AI</div>
-      <div>
-        <h2>ServiceNow AI Academy</h2>
-      </div>
-    </div>
-
-    <nav>
-      <a onclick="scrollToSection('courses')">Courses</a>
-      <a onclick="scrollToSection('learningPath')">Learning Path</a>
-      <a onclick="showProgress()">My Progress</a>
-    </nav>
-  </header>
-
-  <!-- HERO -->
-
-  <section class="hero">
-
+<header>
+  <div class="brand">
+    <div class="brand-mark">NL</div>
     <div>
-      <h1>
-        Master <span>AI in ServiceNow</span>
-      </h1>
-
-      <p>
-        A practical learning platform for understanding AI concepts,
-        ServiceNow Now Assist, Generative AI, AI Agents, Predictive
-        Intelligence, automation, and real-world ServiceNow AI use cases.
-      </p>
-
-      <div class="hero-buttons">
-
-        <button
-          class="primary-btn"
-          onclick="scrollToSection('courses')">
-          Start Learning
-        </button>
-
-        <button
-          class="secondary-btn"
-          onclick="scrollToSection('learningPath')">
-          View Learning Path
-        </button>
-
-      </div>
+      <h2>NowLens</h2>
+      <small>ITOM • ITAM • Now Assist</small>
     </div>
+  </div>
+  <nav>
+    <a onclick="goTo('courses')">Courses</a>
+    <a onclick="goTo('learningPath')">Learning Path</a>
+    <a onclick="showProgress()">My Progress</a>
+  </nav>
+</header>
 
-    <div class="hero-card">
-
-      <h3>Your Learning Progress</h3>
-
-      <div class="progress-container">
-
-        <div class="progress-info">
-          <span>Course completion</span>
-          <strong id="progressPercent">0%</strong>
-        </div>
-
-        <div class="progress-bar">
-          <div
-            id="progressBar"
-            class="progress">
-          </div>
-        </div>
-
-      </div>
-
-      <div class="hero-stats">
-
-        <div class="hero-stat">
-          <strong id="completedCount">0</strong>
-          <span>Completed</span>
-        </div>
-
-        <div class="hero-stat">
-          <strong>6</strong>
-          <span>Modules</span>
-        </div>
-
-        <div class="hero-stat">
-          <strong>3h 45m</strong>
-          <span>Learning</span>
-        </div>
-
-      </div>
-
+<section class="hero">
+  <div>
+    <div class="eyebrow">Independent ServiceNow learning platform</div>
+    <h1>Master <span>ITOM, ITAM & Now Assist</span></h1>
+    <p>
+      Practical, structured training focused on the technologies support engineers and administrators work with every day —
+      MID Server, Discovery, Cloud Discovery, CMDB, Event Management, Service Mapping, HAM, SAM, ACC and the Now Assist product suite.
+    </p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="goTo('courses')">Explore Courses</button>
+      <button class="btn-secondary" onclick="goTo('learningPath')">View Learning Path</button>
     </div>
+  </div>
 
-  </section>
+  <div class="progress-card">
+    <h3>Your Learning Progress</h3>
+    <div class="progress-row">
+      <span>Overall completion</span>
+      <strong id="progressPercent">0%</strong>
+    </div>
+    <div class="bar"><div id="progressBar"></div></div>
+    <div class="stats">
+      <div class="stat"><strong id="completedCount">0</strong><span>Completed</span></div>
+      <div class="stat"><strong id="moduleCount">0</strong><span>Modules</span></div>
+      <div class="stat"><strong>3</strong><span>Learning Tracks</span></div>
+    </div>
+  </div>
+</section>
 
-  <!-- COURSES -->
+<section class="tracks container">
+  <div class="track-grid">
+    <div class="track-card">
+      <div class="track-label track-itom">ITOM</div>
+      <h3>Operate & Discover</h3>
+      <p>MID Server, Discovery, Cloud Discovery, CMDB, ACC, Event Management and Service Mapping.</p>
+    </div>
+    <div class="track-card">
+      <div class="track-label track-itam">ITAM</div>
+      <h3>Manage Technology Assets</h3>
+      <p>Asset foundations, Hardware Asset Management, Software Asset Management and lifecycle governance.</p>
+    </div>
+    <div class="track-card">
+      <div class="track-label track-ai">Now Assist</div>
+      <h3>Apply Enterprise AI</h3>
+      <p>Now Assist Admin, AI Search, Skill Kit, Data Kit, GAIC, NAVA, Now Assist Panel, AI Agents and NA ITSM.</p>
+    </div>
+  </div>
+</section>
 
-  <main
-    id="courses"
-    class="container">
-
-    <div class="section-header">
-      <h2>AI Learning Modules</h2>
-      <p>
-        Build your ServiceNow AI knowledge from fundamentals
-        to advanced AI-driven automation.
-      </p>
+<section id="courses" class="main">
+  <div class="container">
+    <div class="section-head">
+      <h2>Core Training Modules</h2>
+      <p>Start with infrastructure visibility, move into asset management, and then build out the Now Assist troubleshooting and AI enablement track.</p>
     </div>
 
     <div class="toolbar">
-
-      <div class="search-box">
-        <input
-          id="searchInput"
-          type="text"
-          placeholder="Search courses..."
-          oninput="filterCourses()">
+      <div class="search">
+        <input id="searchInput" type="text" placeholder="Search MID Server, Discovery, SAM, AI Search..." oninput="renderCourses()" />
       </div>
-
       <div class="filters">
-
-        <button
-          class="filter-btn active"
-          onclick="setFilter('all', this)">
-          All
-        </button>
-
-        <button
-          class="filter-btn"
-          onclick="setFilter('beginner', this)">
-          Beginner
-        </button>
-
-        <button
-          class="filter-btn"
-          onclick="setFilter('intermediate', this)">
-          Intermediate
-        </button>
-
-        <button
-          class="filter-btn"
-          onclick="setFilter('advanced', this)">
-          Advanced
-        </button>
-
+        <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
+        <button class="filter-btn" onclick="setFilter('itom',this)">ITOM</button>
+        <button class="filter-btn" onclick="setFilter('itam',this)">ITAM</button>
+        <button class="filter-btn" onclick="setFilter('ai',this)">Now Assist</button>
       </div>
-
     </div>
 
-    <div
-      id="courseGrid"
-      class="course-grid">
-    </div>
-
-    <!-- LEARNING PATH -->
-
-    <section
-      id="learningPath"
-      class="learning-path">
-
-      <h2>Recommended Learning Path</h2>
-
-      <div class="path-steps">
-
-        <div class="path-step">
-          <div class="path-number">1</div>
-          <h3>AI Fundamentals</h3>
-          <p>
-            Understand AI, ML, Generative AI and LLM concepts.
-          </p>
-        </div>
-
-        <div class="path-step">
-          <div class="path-number">2</div>
-          <h3>ServiceNow AI</h3>
-          <p>
-            Learn how ServiceNow incorporates AI into workflows.
-          </p>
-        </div>
-
-        <div class="path-step">
-          <div class="path-number">3</div>
-          <h3>Now Assist</h3>
-          <p>
-            Explore generative AI experiences and productivity use cases.
-          </p>
-        </div>
-
-        <div class="path-step">
-          <div class="path-number">4</div>
-          <h3>AI Agents</h3>
-          <p>
-            Design intelligent agents capable of executing work.
-          </p>
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-  <!-- SIDE LESSON -->
-
-  <div
-    id="overlay"
-    class="overlay"
-    onclick="closeLesson()">
+    <div id="courseGrid" class="course-grid"></div>
   </div>
+</section>
 
-  <aside
-    id="lessonPanel"
-    class="lesson-panel">
+<section id="learningPath" class="container path">
+  <h2>Recommended Learning Path</h2>
+  <p>A practical progression from connectivity and discovery to operational data, asset governance and AI-assisted support.</p>
+  <div class="path-grid">
+    <div class="path-step"><span>1</span><h4>MID Server & Discovery</h4><p>Build connectivity fundamentals and learn how infrastructure data reaches ServiceNow.</p></div>
+    <div class="path-step"><span>2</span><h4>CMDB & ITOM Operations</h4><p>Understand CI data, cloud visibility, event handling, service mapping and ACC.</p></div>
+    <div class="path-step"><span>3</span><h4>HAM & SAM</h4><p>Learn hardware and software asset lifecycles, normalization, entitlements and reconciliation.</p></div>
+    <div class="path-step"><span>4</span><h4>Now Assist</h4><p>Progress through common GenAI services, AI Search, skills, agents, virtual agent and ITSM use cases.</p></div>
+  </div>
+</section>
 
-    <div class="lesson-header">
-
-      <div>
-        <small id="lessonLevel"></small>
-        <h2 id="lessonTitle">
-          Lesson
-        </h2>
-      </div>
-
-      <button
-        class="close-btn"
-        onclick="closeLesson()">
-        ×
-      </button>
-
+<div id="overlay" class="overlay" onclick="closeCourse()"></div>
+<aside id="drawer" class="drawer">
+  <div class="drawer-head">
+    <div>
+      <small id="drawerTrack"></small>
+      <h2 id="drawerTitle">Course</h2>
     </div>
+    <button class="close" onclick="closeCourse()">×</button>
+  </div>
+  <div id="drawerBody" class="drawer-body"></div>
+</aside>
 
-    <div
-      id="lessonBody"
-      class="lesson-body">
-    </div>
-
-  </aside>
-
-  <footer>
-    ServiceNow AI Academy • Demo learning portal • Built for educational purposes
-  </footer>
-
+<footer>
+  <strong>NowLens</strong> — Independent learning content for ServiceNow practitioners. Not affiliated with or endorsed by ServiceNow.
+</footer>
 
 <script>
+const courses = [
+  {
+    id: 1, track: 'itom', trackLabel: 'ITOM', icon: '🛰️', title: 'MID Server', duration: '4 Days',
+    description: 'Install, configure, upgrade, secure, troubleshoot and scale MID Servers for enterprise use.',
+    topics: [
+      'Install a MID Server on Windows using MSI','Install a MID Server on Linux','Install multiple MID Servers on a single system',
+      'MID Server upgrades and pre-upgrade checks','MID Server Upgrade History and logs','Upgrade the MID Server manually',
+      'Restore a MID Server after a failed upgrade','MID Server configuration and domain separation',
+      'MID Server selection and default MID Server by application','Override the MID Server selection filter',
+      'Install and uninstall Nmap on a MID Server','Configure MID Server clusters and distributed clusters',
+      'Using MID Server IP range auto-assignment','MID Server capabilities and selection algorithms',
+      'MID Server PowerShell files and parameters','Securing and encrypting MID Server data',
+      'MID Server active issues and connectivity troubleshooting','MID Server fails to start',
+      'Interpreting MID Server user debugging output','MID Server resource threshold alerts',
+      'Mutual Authentication','SSL certificate import','Resolving MID Server issues'
+    ]
+  },
+  {
+    id: 2, track: 'itom', trackLabel: 'ITOM', icon: '🔎', title: 'Discovery', duration: '2 Days',
+    description: 'Learn credentialed discovery, schedules, patterns, identification and troubleshooting.',
+    topics: ['Discovery architecture and execution flow','Credentials, behaviors and schedules','Shazzam, classification and identification',
+      'Horizontal Discovery patterns','Pattern execution and troubleshooting','Discovery status and ECC Queue analysis',
+      'CI identification and IRE fundamentals','Windows, Linux, network and database discovery basics']
+  },
+  {
+    id: 3, track: 'itom', trackLabel: 'ITOM', icon: '☁️', title: 'Cloud Discovery', duration: '1 Day',
+    description: 'Understand discovery of cloud resources through ServiceNow cloud integrations.',
+    topics: ['Cloud Discovery architecture','Cloud credentials and service accounts','AWS and Azure account discovery',
+      'Schedules and resource discovery','Cloud CI relationships','Troubleshooting missing cloud resources']
+  },
+  {
+    id: 4, track: 'itom', trackLabel: 'ITOM', icon: '🗂️', title: 'CMDB & Asset Foundations', duration: '2 Days',
+    description: 'Build strong CMDB fundamentals including CI classes, identification, reconciliation and asset relationships.',
+    topics: ['CMDB class hierarchy','CI identification and IRE','Reconciliation rules and data source precedence','CI relationships',
+      'CMDB Health concepts','Model categories and asset-CI synchronization','Lifecycle and status management']
+  },
+  {
+    id: 5, track: 'itom', trackLabel: 'ITOM', icon: '📡', title: 'Agent Client Collector (ACC)', duration: '1 Day',
+    description: 'Learn agent-based visibility, ACC architecture, deployment, upgrades and troubleshooting.',
+    topics: ['ACC architecture and components','Agent installation and registration','ACC Visibility','Agent upgrade behavior',
+      'Collected data and CI identification','Agent troubleshooting and logs']
+  },
+  {
+    id: 6, track: 'itom', trackLabel: 'ITOM', icon: '🚨', title: 'Event Management', duration: '2 Days',
+    description: 'Understand events, alerts, event rules, correlation, incident creation and operational troubleshooting.',
+    topics: ['Event ingestion and processing','Event rules and alert creation','Alert binding to CIs','Correlation and grouping',
+      'Alert management and incident creation','Connector troubleshooting','Event and alert retention concepts']
+  },
+  {
+    id: 7, track: 'itom', trackLabel: 'ITOM', icon: '🕸️', title: 'Service Mapping', duration: '2 Days',
+    description: 'Learn service maps, entry points, patterns and troubleshooting application dependencies.',
+    topics: ['Service Mapping architecture','Application service entry points','Pattern-based service discovery',
+      'Traffic-based discovery concepts','CI relationships and dependency views','Service Mapping troubleshooting']
+  },
+  {
+    id: 8, track: 'itam', trackLabel: 'ITAM', icon: '💻', title: 'Hardware Asset Management', duration: '2 Days',
+    description: 'Manage hardware lifecycle from request and stock through deployment, transfer, retirement and disposal.',
+    topics: ['HAM data model and asset lifecycle','Models and model categories','Stockrooms and inventory',
+      'Transfer orders and asset movement','Asset-CI synchronization','Retirement, disposal and audit concepts']
+  },
+  {
+    id: 9, track: 'itam', trackLabel: 'ITAM', icon: '📦', title: 'Software Asset Management', duration: '3 Days',
+    description: 'Learn software discovery, normalization, software models, entitlements and license reconciliation.',
+    topics: ['Software installations and discovery sources','Normalization process','Software models and discovery maps',
+      'Software entitlements','License metrics','Reconciliation and compliance positions','Unlicensed installs and remediation',
+      'SaaS and user subscription concepts']
+  },
+  {
+    id: 10, track: 'itam', trackLabel: 'ITAM', icon: '🔁', title: 'Asset Lifecycle & Governance', duration: '1 Day',
+    description: 'Connect CMDB and ITAM processes with lifecycle, governance and data-quality best practices.',
+    topics: ['Asset and CI lifecycle alignment','Data quality and duplicate prevention','Lifecycle status mappings',
+      'Retirement and decommissioning','Data retention and governance','Operational reporting fundamentals']
+  },
 
-  /*
-   * COURSE DATA
-   */
+  {
+    id: 11, track: 'ai', trackLabel: 'Now Assist', icon: '🧠', title: 'AI Introduction', duration: '85 min',
+    description: 'Start with AI essentials before moving into the Now Assist product suite.',
+    topics: ['AI Essentials','Generative AI fundamentals','LLM concepts','Enterprise AI use cases','Responsible AI basics']
+  },
+  {
+    id: 12, track: 'ai', trackLabel: 'Now Assist', icon: '⚙️', title: 'Now Assist Admin (NAA)', duration: '~4 hrs',
+    description: 'Learn Now Assist administration, console setup, configuration and troubleshooting.',
+    topics: ['Now Assist Admin Console Overview','NAA introduction and troubleshooting','NADK and NAA deep dive',
+      'Now Assist Admin hands-on lab','Now Assist Admin troubleshooting concepts']
+  },
+  {
+    id: 13, track: 'ai', trackLabel: 'Now Assist', icon: '🔍', title: 'AI Search (AIS)', duration: '~11 hrs',
+    description: 'Learn AI Search setup, retrieval, user experience and troubleshooting.',
+    topics: ['AI Search learning path','AI Search overview','AI Search troubleshooting deep dive','AI Search UX troubleshooting',
+      'Hands-on AI Search lab','Retrieval troubleshooting']
+  },
+  {
+    id: 14, track: 'ai', trackLabel: 'Now Assist', icon: '🧩', title: 'Now Assist Skill Kit (NASK)', duration: '~2 hrs',
+    description: 'Create and troubleshoot custom Now Assist skills.',
+    topics: ['Custom skill creation','Skill Kit tools','Skill Kit troubleshooting','Custom skill design concepts']
+  },
+  {
+    id: 15, track: 'ai', trackLabel: 'Now Assist', icon: '🗃️', title: 'Now Assist Data Kit (NADK)', duration: '~2 hrs',
+    description: 'Understand data collection, evaluation and the data foundations supporting AI experiences.',
+    topics: ['Data Kit concepts','Data collection','Data evaluation','Agent evaluation','Data Kit troubleshooting']
+  },
+  {
+    id: 16, track: 'ai', trackLabel: 'Now Assist', icon: '🎛️', title: 'Generative AI Controller (GAIC)', duration: '~5 hrs',
+    description: 'Understand the Generative AI Controller architecture and troubleshooting flow.',
+    topics: ['Gen AI Controller overview','GAIC deep dive','GAIC troubleshooting','Provider and model integration concepts',
+      'Technical support playbook concepts']
+  },
+  {
+    id: 17, track: 'ai', trackLabel: 'Now Assist', icon: '💬', title: 'Now Assist in Virtual Agent (NAVA)', duration: '~17 hrs',
+    description: 'Learn Now Assist in Virtual Agent architecture, guided setup, skills, performance and troubleshooting.',
+    topics: ['Virtual Agent basics','NAVA basics','Guided Setup and Enhanced Chat troubleshooting',
+      'NAVA in-depth flow and troubleshooting','NAVA performance troubleshooting','Skill discovery and execution',
+      'AI Search UX troubleshooting','Agentic NAVA architecture','AI Conversation Debugger','Hands-on NAVA lab']
+  },
+  {
+    id: 18, track: 'ai', trackLabel: 'Now Assist', icon: '🪟', title: 'Now Assist Panel (NAP)', duration: '~1.5 hrs',
+    description: 'Learn Now Assist Panel fundamentals and hands-on configuration.',
+    topics: ['Now Assist Panel fundamentals','Now Assist Panel hands-on lab','Panel troubleshooting concepts']
+  },
+  {
+    id: 19, track: 'ai', trackLabel: 'Now Assist', icon: '🤖', title: 'AI Agents', duration: '~9 hrs',
+    description: 'Learn AI Agent concepts, orchestration, troubleshooting and hands-on agent implementation.',
+    topics: ['AI Agents overview','Agentic architecture concepts','AI Agents troubleshooting','Agent tools and execution',
+      'AI Agent hands-on lab']
+  },
+  {
+    id: 20, track: 'ai', trackLabel: 'Now Assist', icon: '🎫', title: 'Now Assist for ITSM', duration: '~5.7 hrs',
+    description: 'Apply Now Assist to ITSM workflows including summarization, resolution notes and conversational skills.',
+    topics: ['Now Assist for ITSM Essentials','Incident attachment summarization','Resolution notes generation',
+      'ITSM skills and agent collection','ITSM conversational skills','Now Assist for ITSM troubleshooting']
+  }
+];
 
-  const courses = [
+let activeFilter = 'all';
 
-    {
-      id: 1,
-      icon: "🧠",
-      title: "AI Fundamentals",
-      level: "beginner",
-      duration: "30 min",
-      description:
-        "Understand artificial intelligence, machine learning, generative AI and large language models.",
+function renderCourses() {
+  const grid = document.getElementById('courseGrid');
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  grid.innerHTML = '';
 
-      content: `
-        <h2>What is Artificial Intelligence?</h2>
+  const visible = courses.filter(c => {
+    const matchesFilter = activeFilter === 'all' || c.track === activeFilter;
+    const haystack = `${c.title} ${c.description} ${c.topics.join(' ')}`.toLowerCase();
+    return matchesFilter && haystack.includes(q);
+  });
 
-        <p>
-          Artificial Intelligence allows computer systems to perform
-          activities that normally require human intelligence.
-        </p>
+  if (!visible.length) {
+    grid.innerHTML = '<div style="grid-column:1/-1;padding:28px;background:white;border:1px solid #e5e7eb;border-radius:12px;color:#6b7280">No modules match your search.</div>';
+    return;
+  }
 
-        <h3>Important AI Concepts</h3>
-
-        <ul>
-          <li>Artificial Intelligence</li>
-          <li>Machine Learning</li>
-          <li>Deep Learning</li>
-          <li>Natural Language Processing</li>
-          <li>Generative AI</li>
-          <li>Large Language Models</li>
-        </ul>
-
-        <h3>Generative AI</h3>
-
-        <p>
-          Generative AI creates new content such as text,
-          summaries, code, images and recommendations.
-        </p>
-
-        <div class="quiz">
-
-          <h3>Knowledge Check</h3>
-
-          <div class="question">
-
-            <strong>
-              Which technology can generate new text based
-              on a user prompt?
-            </strong>
-
-            <label class="option">
-              <input
-                type="radio"
-                name="q1"
-                value="wrong">
-              Database
-            </label>
-
-            <label class="option">
-              <input
-                type="radio"
-                name="q1"
-                value="correct">
-              Generative AI
-            </label>
-
-            <label class="option">
-              <input
-                type="radio"
-                name="q1"
-                value="wrong">
-              Load Balancer
-            </label>
-
-          </div>
-
-          <button
-            class="course-btn"
-            onclick="checkQuiz()">
-            Check Answer
-          </button>
-
-          <div
-            id="quizResult"
-            class="quiz-result">
-          </div>
-
+  visible.forEach(c => {
+    const done = isCompleted(c.id);
+    const card = document.createElement('article');
+    card.className = 'course-card';
+    card.innerHTML = `
+      <div class="course-top">
+        <div class="course-icon">${c.icon}</div>
+        <div class="course-track">${c.trackLabel}</div>
+      </div>
+      <div class="course-body">
+        <h3>${c.title}</h3>
+        <p>${c.description}</p>
+        <div class="course-meta">
+          <span>⏱ ${c.duration}</span>
+          <span>${c.topics.length} topics</span>
+          <span>${done ? '✅ Completed' : '○ Not started'}</span>
         </div>
-      `
-    },
-
-    {
-      id: 2,
-      icon: "⚙️",
-      title: "AI in ServiceNow",
-      level: "beginner",
-      duration: "35 min",
-      description:
-        "Learn how ServiceNow applies AI across ITSM, CSM, HR, ITOM and enterprise workflows.",
-
-      content: `
-        <h2>AI in ServiceNow</h2>
-
-        <p>
-          ServiceNow combines workflow automation with AI to help
-          users resolve requests and automate repetitive activities.
-        </p>
-
-        <h3>Examples</h3>
-
-        <ul>
-          <li>Incident categorization</li>
-          <li>Case summarization</li>
-          <li>Knowledge generation</li>
-          <li>Virtual Agent interactions</li>
-          <li>AI Search</li>
-          <li>Suggested resolutions</li>
-          <li>Workflow automation</li>
-        </ul>
-
-        <h3>Typical Flow</h3>
-
-        <div class="code-box">
-User Request
-   ↓
-ServiceNow Workflow
-   ↓
-AI / Now Assist
-   ↓
-Recommendation or Action
-   ↓
-Human Validation
-        </div>
-      `
-    },
-
-    {
-      id: 3,
-      icon: "✨",
-      title: "Now Assist & Generative AI",
-      level: "intermediate",
-      duration: "45 min",
-      description:
-        "Understand Now Assist capabilities including summarization, generation and AI-powered assistance.",
-
-      content: `
-        <h2>Now Assist</h2>
-
-        <p>
-          Now Assist provides generative AI capabilities embedded
-          directly into ServiceNow workflows.
-        </p>
-
-        <h3>Common Use Cases</h3>
-
-        <ul>
-          <li>Incident summarization</li>
-          <li>Resolution note generation</li>
-          <li>Knowledge article generation</li>
-          <li>Conversation summarization</li>
-          <li>Agent productivity</li>
-        </ul>
-
-        <h3>Example</h3>
-
-        <p>
-          An engineer works on an incident containing several
-          work notes and troubleshooting activities.
-        </p>
-
-        <div class="code-box">
-Incident
-   ↓
-Work Notes
-   ↓
-Now Assist
-   ↓
-Generated Summary
-   ↓
-Engineer Review
-        </div>
-      `
-    },
-
-    {
-      id: 4,
-      icon: "🤖",
-      title: "ServiceNow AI Agents",
-      level: "intermediate",
-      duration: "50 min",
-      description:
-        "Learn how AI Agents reason, choose tools and perform actions across enterprise workflows.",
-
-      content: `
-        <h2>AI Agents</h2>
-
-        <p>
-          AI Agents can understand a goal, determine the
-          required steps and interact with enterprise tools
-          to complete work.
-        </p>
-
-        <h3>AI Agent Architecture</h3>
-
-        <div class="code-box">
-User Goal
-     ↓
-AI Agent
-     ↓
-Reasoning
-     ↓
-Select Tools
-     ↓
-Execute Actions
-     ↓
-Validate Result
-        </div>
-
-        <h3>Example</h3>
-
-        <p>
-          A user reports that they cannot connect to a server.
-          An AI Agent could gather information, inspect relevant
-          records, identify known issues and recommend remediation.
-        </p>
-      `
-    },
-
-    {
-      id: 5,
-      icon: "📊",
-      title: "Predictive Intelligence",
-      level: "advanced",
-      duration: "40 min",
-      description:
-        "Explore machine-learning-based classification, similarity, clustering and prediction.",
-
-      content: `
-        <h2>Predictive Intelligence</h2>
-
-        <p>
-          Predictive Intelligence uses machine learning models
-          to find patterns in ServiceNow data.
-        </p>
-
-        <h3>Capabilities</h3>
-
-        <ul>
-          <li>Classification</li>
-          <li>Similarity</li>
-          <li>Clustering</li>
-          <li>Regression</li>
-        </ul>
-
-        <h3>Incident Example</h3>
-
-        <div class="code-box">
-New Incident
-    ↓
-ML Model
-    ↓
-Prediction
-    ↓
-Category: Network
-Assignment Group: Network Operations
-        </div>
-      `
-    },
-
-    {
-      id: 6,
-      icon: "🚀",
-      title: "Building AI-Powered Workflows",
-      level: "advanced",
-      duration: "45 min",
-      description:
-        "Combine ServiceNow workflows, AI, automation and human approval for real-world enterprise solutions.",
-
-      content: `
-        <h2>AI-Powered Workflow Design</h2>
-
-        <p>
-          Effective AI solutions combine AI reasoning with deterministic
-          workflows and human validation where appropriate.
-        </p>
-
-        <h3>Reference Architecture</h3>
-
-        <div class="code-box">
-User
- ↓
-ServiceNow
- ↓
-Flow Designer
- ↓
-AI / AI Agent
- ↓
-Integration
- ↓
-Enterprise System
- ↓
-Result
-        </div>
-
-        <h3>Best Practices</h3>
-
-        <ul>
-          <li>Define clear AI objectives</li>
-          <li>Use trusted enterprise data</li>
-          <li>Apply role-based access controls</li>
-          <li>Validate generated responses</li>
-          <li>Keep humans involved for high-impact decisions</li>
-          <li>Track AI performance</li>
-        </ul>
-      `
-    }
-
-  ];
-
-  let currentFilter = "all";
-
-
-  /*
-   * RENDER COURSES
-   */
-
-  function renderCourses() {
-
-    const grid =
-      document.getElementById("courseGrid");
-
-    const search =
-      document
-        .getElementById("searchInput")
-        .value
-        .toLowerCase();
-
-    grid.innerHTML = "";
-
-    const filteredCourses =
-      courses.filter(course => {
-
-        const matchesSearch =
-          course.title
-            .toLowerCase()
-            .includes(search) ||
-
-          course.description
-            .toLowerCase()
-            .includes(search);
-
-        const matchesFilter =
-          currentFilter === "all" ||
-          course.level === currentFilter;
-
-        return matchesSearch && matchesFilter;
-
-      });
-
-    filteredCourses.forEach(course => {
-
-      const completed =
-        isCourseCompleted(course.id);
-
-      const card =
-        document.createElement("div");
-
-      card.className =
-        "course-card";
-
-      card.innerHTML = `
-
-        <div class="course-image">
-          ${course.icon}
-        </div>
-
-        <div class="course-content">
-
-          <span class="tag">
-            ${course.level.toUpperCase()}
-          </span>
-
-          <h3>
-            ${course.title}
-          </h3>
-
-          <p>
-            ${course.description}
-          </p>
-
-          <div class="course-meta">
-
-            <span>
-              ⏱ ${course.duration}
-            </span>
-
-            <span>
-              ${completed ? "✅ Completed" : "○ Not started"}
-            </span>
-
-          </div>
-
-          <button
-            class="course-btn"
-            onclick="openLesson(${course.id})">
-
-            ${completed ? "Review Course" : "Start Course"}
-
-          </button>
-
-        </div>
-      `;
-
-      grid.appendChild(card);
-
-    });
-
-  }
-
-
-  /*
-   * COURSE FILTER
-   */
-
-  function setFilter(filter, button) {
-
-    currentFilter = filter;
-
-    document
-      .querySelectorAll(".filter-btn")
-      .forEach(btn =>
-        btn.classList.remove("active")
-      );
-
-    button.classList.add("active");
-
-    renderCourses();
-
-  }
-
-
-  function filterCourses() {
-    renderCourses();
-  }
-
-
-  /*
-   * OPEN LESSON
-   */
-
-  function openLesson(id) {
-
-    const course =
-      courses.find(c => c.id === id);
-
-    document
-      .getElementById("lessonTitle")
-      .textContent =
-      course.title;
-
-    document
-      .getElementById("lessonLevel")
-      .textContent =
-      `${course.level.toUpperCase()} • ${course.duration}`;
-
-    document
-      .getElementById("lessonBody")
-      .innerHTML =
-      course.content +
-
-      `
-      <button
-        class="complete-btn"
-        onclick="completeCourse(${course.id})">
-
-        ✓ Mark Course Complete
-
-      </button>
-      `;
-
-    document
-      .getElementById("lessonPanel")
-      .classList.add("active");
-
-    document
-      .getElementById("overlay")
-      .classList.add("active");
-
-  }
-
-
-  /*
-   * CLOSE LESSON
-   */
-
-  function closeLesson() {
-
-    document
-      .getElementById("lessonPanel")
-      .classList.remove("active");
-
-    document
-      .getElementById("overlay")
-      .classList.remove("active");
-
-  }
-
-
-  /*
-   * COURSE COMPLETION
-   */
-
-  function completeCourse(id) {
-
-    let completed =
-      JSON.parse(
-        localStorage.getItem(
-          "servicenowAICompleted"
-        )
-      ) || [];
-
-    if (!completed.includes(id)) {
-      completed.push(id);
-    }
-
-    localStorage.setItem(
-      "servicenowAICompleted",
-      JSON.stringify(completed)
-    );
-
-    updateProgress();
-
-    renderCourses();
-
-    alert(
-      "🎉 Course completed successfully!"
-    );
-
-  }
-
-
-  function isCourseCompleted(id) {
-
-    const completed =
-      JSON.parse(
-        localStorage.getItem(
-          "servicenowAICompleted"
-        )
-      ) || [];
-
-    return completed.includes(id);
-
-  }
-
-
-  /*
-   * UPDATE PROGRESS
-   */
-
-  function updateProgress() {
-
-    const completed =
-      JSON.parse(
-        localStorage.getItem(
-          "servicenowAICompleted"
-        )
-      ) || [];
-
-    const percentage =
-      Math.round(
-        (completed.length /
-          courses.length) * 100
-      );
-
-    document
-      .getElementById("progressPercent")
-      .textContent =
-      percentage + "%";
-
-    document
-      .getElementById("progressBar")
-      .style.width =
-      percentage + "%";
-
-    document
-      .getElementById("completedCount")
-      .textContent =
-      completed.length;
-
-  }
-
-
-  /*
-   * QUIZ
-   */
-
-  function checkQuiz() {
-
-    const answer =
-      document.querySelector(
-        'input[name="q1"]:checked'
-      );
-
-    const result =
-      document.getElementById(
-        "quizResult"
-      );
-
-    if (!answer) {
-
-      result.textContent =
-        "Please select an answer.";
-
-      result.style.color =
-        "#f59e0b";
-
-      return;
-
-    }
-
-    if (answer.value === "correct") {
-
-      result.textContent =
-        "✅ Correct! Generative AI can create new content.";
-
-      result.style.color =
-        "#16a34a";
-
-    } else {
-
-      result.textContent =
-        "❌ Incorrect. Try again.";
-
-      result.style.color =
-        "#dc2626";
-
-    }
-
-  }
-
-
-  /*
-   * NAVIGATION
-   */
-
-  function scrollToSection(id) {
-
-    document
-      .getElementById(id)
-      .scrollIntoView({
-        behavior: "smooth"
-      });
-
-  }
-
-
-  /*
-   * SHOW PROGRESS
-   */
-
-  function showProgress() {
-
-    const completed =
-      JSON.parse(
-        localStorage.getItem(
-          "servicenowAICompleted"
-        )
-      ) || [];
-
-    alert(
-      `You have completed ${completed.length} of ${courses.length} modules.`
-    );
-
-  }
-
-
-  /*
-   * INITIALIZE APPLICATION
-   */
-
+        <button class="course-btn" onclick="openCourse(${c.id})">${done ? 'Review Module' : 'View Curriculum'}</button>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function setFilter(filter, btn) {
+  activeFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
   renderCourses();
+}
+
+function openCourse(id) {
+  const c = courses.find(x => x.id === id);
+  document.getElementById('drawerTrack').textContent = `${c.trackLabel} • ${c.duration}`;
+  document.getElementById('drawerTitle').textContent = c.title;
+  document.getElementById('drawerBody').innerHTML = `
+    <p>${c.description}</p>
+    <h3>Training Topics</h3>
+    <div class="topic-list">${c.topics.map(t => `<div class="topic">${t}</div>`).join('')}</div>
+    <div class="note">This curriculum can be expanded into detailed lessons, labs, troubleshooting scenarios and quizzes as NowLens grows.</div>
+    <button class="complete-btn" onclick="completeCourse(${c.id})">✓ Mark Module Complete</button>`;
+  document.getElementById('drawer').classList.add('active');
+  document.getElementById('overlay').classList.add('active');
+}
+
+function closeCourse() {
+  document.getElementById('drawer').classList.remove('active');
+  document.getElementById('overlay').classList.remove('active');
+}
+
+function completedIds() {
+  return JSON.parse(localStorage.getItem('nowlensCompleted') || '[]');
+}
+
+function isCompleted(id) { return completedIds().includes(id); }
+
+function completeCourse(id) {
+  const done = completedIds();
+  if (!done.includes(id)) done.push(id);
+  localStorage.setItem('nowlensCompleted', JSON.stringify(done));
   updateProgress();
+  renderCourses();
+  closeCourse();
+  alert('Module marked complete.');
+}
 
+function updateProgress() {
+  const done = completedIds();
+  const pct = Math.round((done.length / courses.length) * 100);
+  document.getElementById('completedCount').textContent = done.length;
+  document.getElementById('moduleCount').textContent = courses.length;
+  document.getElementById('progressPercent').textContent = `${pct}%`;
+  document.getElementById('progressBar').style.width = `${pct}%`;
+}
+
+function showProgress() {
+  const done = completedIds().length;
+  alert(`You have completed ${done} of ${courses.length} modules.`);
+}
+
+function goTo(id) { document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+
+renderCourses();
+updateProgress();
 </script>
-
 </body>
 </html>
