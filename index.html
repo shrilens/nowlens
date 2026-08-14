@@ -10,6 +10,8 @@
   <meta name="theme-color" content="#0b1020" />
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@500;700;800;900&display=swap');
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -29,6 +31,8 @@
       --amber: #ffbe55;
       --green: #5ce1a7;
       --shadow: 0 30px 80px rgba(0,0,0,.25);
+      --heading-font: "Manrope", "Inter", "Segoe UI", sans-serif;
+      --body-font: "Inter", "Segoe UI", sans-serif;
     }
 
     html {
@@ -37,7 +41,8 @@
     }
 
     body {
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      cd /Users/shrikantsuresh.babar/nowlens/nowlens
+      python3 -m http.server 8000      font-family: var(--body-font);
       color: var(--white);
       background:
         radial-gradient(circle at 12% 15%, rgba(124,92,255,.22), transparent 26%),
@@ -45,6 +50,14 @@
         radial-gradient(circle at 70% 70%, rgba(255,109,168,.10), transparent 26%),
         var(--bg);
       overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      letter-spacing: -0.01em;
+    }
+
+    h1, h2, h3, h4, .brand-name, .brand-sub, .hero-kicker, .section-head .eyebrow, .track-tab, .filter-btn, .course-label, .drawer-kicker, .metric strong, .progress-stat strong {
+      font-family: var(--heading-font);
     }
 
     a { color: inherit; text-decoration: none; }
@@ -128,8 +141,8 @@
     .brand-name {
       font-size: 24px;
       line-height: .95;
-      font-weight: 950;
-      letter-spacing: -1.4px;
+      font-weight: 900;
+      letter-spacing: -1.55px;
       background: linear-gradient(90deg, #ffffff 0%, #d7d0ff 42%, #72f2ef 100%);
       -webkit-background-clip: text;
       color: transparent;
@@ -203,6 +216,7 @@
       font-weight: 800;
       letter-spacing: .08em;
       text-transform: uppercase;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
     }
 
     .hero-kicker span {
@@ -217,8 +231,10 @@
       margin-top: 22px;
       max-width: 780px;
       font-size: clamp(54px, 7vw, 96px);
-      line-height: .93;
+      line-height: .92;
       letter-spacing: -5px;
+      font-weight: 900;
+      font-family: var(--heading-font);
     }
 
     .hero h1 em {
@@ -233,7 +249,8 @@
       margin-top: 26px;
       color: var(--muted);
       font-size: 17px;
-      line-height: 1.8;
+      line-height: 1.78;
+      font-weight: 500;
     }
 
     .hero-actions {
@@ -247,7 +264,8 @@
       border: 0;
       cursor: pointer;
       font: inherit;
-      font-weight: 900;
+      font-weight: 800;
+      letter-spacing: -0.02em;
       border-radius: 12px;
       padding: 14px 18px;
     }
@@ -468,12 +486,14 @@
       font-size: 44px;
       letter-spacing: -2px;
       line-height: 1;
+      font-weight: 800;
     }
 
     .section-head p {
       color: #6d7385;
       font-size: 14px;
       line-height: 1.7;
+      font-weight: 500;
     }
 
     /* ===== BENEFITS ===== */
@@ -527,14 +547,16 @@
     .benefit-card:nth-child(4) .benefit-icon { background: #fdeaf1; }
 
     .benefit-card h3 {
-      font-size: 16px;
+      font-size: 18px;
       margin-bottom: 7px;
+      letter-spacing: -0.04em;
     }
 
     .benefit-card p {
       color: #73798b;
       font-size: 12px;
       line-height: 1.7;
+      font-weight: 500;
     }
 
     /* ===== TRACK CAROUSEL STYLE ===== */
@@ -593,6 +615,7 @@
     .track-main h3 {
       font-size: 34px;
       letter-spacing: -1.5px;
+      font-weight: 800;
     }
 
     .track-main p {
@@ -600,6 +623,7 @@
       margin-top: 10px;
       line-height: 1.75;
       font-size: 13px;
+      font-weight: 500;
     }
 
     .track-tags {
@@ -678,6 +702,7 @@
       font-size: 44px;
       letter-spacing: -2px;
       line-height: 1;
+      font-weight: 800;
     }
 
     .method-copy p {
@@ -685,6 +710,7 @@
       color: #6f7587;
       font-size: 14px;
       line-height: 1.8;
+      font-weight: 500;
     }
 
     .method-flow {
@@ -721,12 +747,14 @@
     .method-card h4 {
       font-size: 15px;
       margin-bottom: 5px;
+      letter-spacing: -0.04em;
     }
 
     .method-card p {
       color: #777d8e;
       font-size: 11px;
       line-height: 1.65;
+      font-weight: 500;
     }
 
     /* ===== COURSES ===== */
@@ -840,6 +868,7 @@
     .course-body h3 {
       font-size: 18px;
       letter-spacing: -.3px;
+      font-weight: 800;
     }
 
     .course-body p {
@@ -848,6 +877,7 @@
       font-size: 12px;
       min-height: 59px;
       line-height: 1.65;
+      font-weight: 500;
     }
 
     .course-meta {
@@ -892,12 +922,14 @@
     .progress-card h3 {
       font-size: 30px;
       letter-spacing: -1px;
+      font-weight: 800;
     }
 
     .progress-card p {
       margin-top: 8px;
       color: #aeb7cf;
       font-size: 12px;
+      font-weight: 500;
     }
 
     .progress-bar {
