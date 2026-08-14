@@ -1403,42 +1403,6 @@
       font-weight: 800;
     }
 
-    .visitor-counter {
-      position: fixed;
-      right: 22px;
-      bottom: 22px;
-      z-index: 1200;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 4px;
-      padding: 10px 12px 9px;
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 14px;
-      background: rgba(11,16,32,.72);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 16px 30px rgba(0,0,0,.2);
-      color: #edf2ff;
-    }
-
-    .visitor-label {
-      font-size: 9px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: #9ea9c7;
-      font-weight: 800;
-    }
-
-    .visitor-counter strong {
-      font-size: 20px;
-      line-height: 1;
-      letter-spacing: -0.08em;
-      font-family: var(--heading-font);
-      font-weight: 900;
-      color: #f8fbff;
-      text-shadow: 0 0 12px rgba(124,92,255,.3);
-    }
-
     .course-btn {
       width: 100%;
       color: var(--ink);
@@ -3432,11 +3396,6 @@
   <div id="drawerBody" class="drawer-body"></div>
 </aside>
 
-<div class="visitor-counter" aria-live="polite" title="Approximate site visits from this browser">
-  <span class="visitor-label">Visits</span>
-  <strong id="visitorCount">0</strong>
-</div>
-
 <footer>
   <strong>NowLens</strong> — independent ServiceNow learning for people who want to understand the platform better.
   Not affiliated with or endorsed by ServiceNow.
@@ -3609,45 +3568,6 @@ function updateProgress() {
   document.getElementById('progressBar').style.width = `${pct}%`;
 }
 
-function updateVisitorCounter() {
-  const counter = document.getElementById('visitorCount');
-  if (!counter) return;
-
-  const sessionKey = 'nowlensVisitorSession';
-  const fallbackKey = 'nowlensManualVisitorCount';
-
-  const setCount = (value) => {
-    counter.textContent = Number(value || 0).toLocaleString();
-  };
-
-  const loadLocalFallback = () => {
-    const fallback = Number(localStorage.getItem(fallbackKey) || 0);
-    setCount(fallback);
-  };
-
-  if (localStorage.getItem(sessionKey)) {
-    fetch('https://api.countapi.xyz/get/nowlens-prod/visits')
-      .then(response => response.ok ? response.json() : Promise.reject())
-      .then(data => setCount(data.value))
-      .catch(loadLocalFallback);
-    return;
-  }
-
-  localStorage.setItem(sessionKey, '1');
-
-  fetch('https://api.countapi.xyz/hit/nowlens-prod/visits')
-    .then(response => response.ok ? response.json() : Promise.reject())
-    .then(data => {
-      setCount(data.value);
-      localStorage.setItem(fallbackKey, String(data.value));
-    })
-    .catch(() => {
-      const fallback = Number(localStorage.getItem(fallbackKey) || 0) + 1;
-      localStorage.setItem(fallbackKey, String(fallback));
-      setCount(fallback);
-    });
-}
-
 function scrollToId(id) {
   document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
@@ -3669,7 +3589,6 @@ function observeReveal() {
 
 renderCourses();
 updateProgress();
-updateVisitorCounter();
 observeReveal();
 </script>
 
