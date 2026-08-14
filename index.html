@@ -144,7 +144,7 @@
     .brand-mark::before {
       content: "";
       position: absolute;
-      width: 70px;
+      width: 82px;
       height: 18px;
       transform: rotate(-35deg);
       top: -8px;
@@ -472,21 +472,40 @@
       width: 360px;
       padding: 28px 26px 24px;
       border-radius: 30px;
-      background: linear-gradient(145deg, rgba(255,255,255,.13), rgba(255,255,255,.06));
-      border: 1px solid rgba(255,255,255,.14);
+
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.10), rgba(255,255,255,.045));
+
+      border: 1px solid rgba(190,202,235,.18);
+
       backdrop-filter: blur(18px);
-      box-shadow: var(--shadow);
+
+      box-shadow:
+        0 28px 65px rgba(0,0,0,.24),
+        0 0 0 1px rgba(255,255,255,.025) inset,
+        0 0 34px rgba(92,112,180,.05);
+
       position: relative;
       z-index: 4;
       animation: float 5s ease-in-out infinite;
+      overflow: hidden;
     }
 
+    /* A subtle aligned highlight instead of a second oversized rectangle */
     .center-card::before {
       content: "";
       position: absolute;
-      inset: -16px;
-      border-radius: 38px;
-      border: 1px solid rgba(255,255,255,.08);
+      left: 22px;
+      right: 22px;
+      top: 0;
+      height: 1px;
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(208,218,246,.24),
+          transparent
+        );
       pointer-events: none;
     }
 
@@ -604,6 +623,275 @@
       left: 18px;
       animation-delay: 1.4s;
       transform: rotate(-4deg);
+    }
+
+
+
+    /* ===== NOWLENS PROFESSIONAL TOPIC ORBIT ===== */
+    .topic-orbit {
+      position: absolute;
+      inset: 0;
+      z-index: 6;
+      pointer-events: none;
+    }
+
+    .topic-node {
+      --x: 0px;
+      --y: 0px;
+
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 92px;
+      height: 92px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      padding: 10px;
+      border-radius: 50%;
+
+      color: #eef3ff;
+      text-align: center;
+
+      transform:
+        translate(-50%, -50%)
+        translate(var(--x), var(--y));
+
+      border: 1px solid rgba(173,188,224,.20);
+
+      background:
+        radial-gradient(circle at 32% 24%, rgba(255,255,255,.06), transparent 38%),
+        rgba(17,25,47,.90);
+
+      box-shadow:
+        0 14px 28px rgba(0,0,0,.20),
+        inset 0 0 22px rgba(255,255,255,.018);
+
+      backdrop-filter: blur(14px);
+      pointer-events: auto;
+
+      animation: topicNodeFloat 8s ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+
+      transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+    }
+
+    .topic-node::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.035);
+      pointer-events: none;
+    }
+
+    .topic-node:hover {
+      border-color: rgba(155,171,255,.38);
+      background: rgba(24,34,61,.96);
+      box-shadow:
+        0 18px 34px rgba(0,0,0,.24),
+        0 0 22px rgba(124,92,255,.10);
+    }
+
+    .topic-code {
+      width: 34px;
+      height: 34px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 7px;
+
+      color: #cdd7ff;
+      background: rgba(124,92,255,.10);
+      border: 1px solid rgba(151,137,255,.18);
+
+      font-family: var(--heading-font);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .05em;
+    }
+
+    .topic-node strong {
+      display: block;
+      font-size: 10px;
+      line-height: 1.22;
+      font-weight: 800;
+      letter-spacing: -.01em;
+    }
+
+    .topic-node small {
+      display: block;
+      margin-top: 3px;
+      max-width: 72px;
+
+      color: #8f9bb7;
+      font-size: 7px;
+      line-height: 1.22;
+      font-weight: 600;
+    }
+
+    .topic-node.n1 { --x: -158px; --y: -188px; --delay: -0.4s; }
+    .topic-node.n2 { --x:  158px; --y: -188px; --delay: -1.4s; }
+    .topic-node.n3 { --x: -238px; --y:  -68px; --delay: -2.4s; }
+    .topic-node.n4 { --x:  238px; --y:  -68px; --delay: -3.4s; }
+    .topic-node.n5 { --x: -238px; --y:   88px; --delay: -4.4s; }
+    .topic-node.n6 { --x:  238px; --y:   88px; --delay: -5.4s; }
+    .topic-node.n7 { --x: -150px; --y:  202px; --delay: -6.4s; }
+    .topic-node.n8 { --x:  150px; --y:  202px; --delay: -7.4s; }
+
+    @keyframes topicNodeFloat {
+      0%, 100% { margin-top: 0; }
+      50% { margin-top: -3px; }
+    }
+
+    @media (max-width: 1180px) {
+      .topic-node {
+        width: 82px;
+        height: 82px;
+      }
+
+      .topic-node.n1 { --x: -140px; --y: -166px; }
+      .topic-node.n2 { --x:  140px; --y: -166px; }
+      .topic-node.n3 { --x: -205px; --y:  -58px; }
+      .topic-node.n4 { --x:  205px; --y:  -58px; }
+      .topic-node.n5 { --x: -205px; --y:   78px; }
+      .topic-node.n6 { --x:  205px; --y:   78px; }
+      .topic-node.n7 { --x: -132px; --y:  178px; }
+      .topic-node.n8 { --x:  132px; --y:  178px; }
+    }
+
+
+    /* ===== NOWLENS ORBITAL LEARNING PROBE ===== */
+    .launch-line {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 510px;
+      height: 510px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 1px solid rgba(133,155,207,.08);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .explorer-orbit {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 505px;
+      height: 505px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      z-index: 6;
+      pointer-events: none;
+      animation: explorerOrbit 26s linear infinite;
+    }
+
+    .learning-explorer {
+      position: absolute;
+      top: -8px;
+      left: calc(50% - 21px);
+      width: 42px;
+      height: 24px;
+      filter: drop-shadow(0 0 8px rgba(92,195,210,.20));
+      transform: rotate(7deg);
+    }
+
+    .explorer-body {
+      position: absolute;
+      inset: 5px 8px 5px 5px;
+      border-radius: 12px 14px 14px 12px;
+
+      background:
+        linear-gradient(135deg, #6876a7 0%, #4f5e8d 52%, #3e7082 100%);
+
+      border: 1px solid rgba(213,224,255,.34);
+
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.04),
+        0 4px 12px rgba(0,0,0,.18);
+    }
+
+    .explorer-body::before {
+      content: "N";
+      position: absolute;
+      left: 10px;
+      top: 3px;
+
+      color: #f4f7ff;
+      font-family: var(--heading-font);
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: .02em;
+    }
+
+    .explorer-window {
+      position: absolute;
+      right: 10px;
+      top: 8px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+
+      background: #bce8ec;
+
+      box-shadow:
+        0 0 0 1px rgba(10,18,36,.35),
+        0 0 5px rgba(188,232,236,.30);
+    }
+
+    .explorer-fin {
+      position: absolute;
+      left: 11px;
+      bottom: 1px;
+      width: 8px;
+      height: 6px;
+
+      background: #62719c;
+      clip-path: polygon(0 100%, 35% 0, 100% 100%);
+    }
+
+    .explorer-nose {
+      position: absolute;
+      right: 1px;
+      top: 8px;
+      width: 9px;
+      height: 10px;
+
+      background: #6b9baa;
+      clip-path: polygon(0 0, 100% 50%, 0 100%);
+    }
+
+    .explorer-flame {
+      display: none;
+    }
+
+    .explorer-trail {
+      position: absolute;
+      left: -48px;
+      top: 11px;
+      width: 50px;
+      height: 2px;
+      border-radius: 999px;
+
+      background:
+        linear-gradient(90deg, transparent, rgba(92,195,210,.10), rgba(92,195,210,.32));
+
+      filter: blur(.6px);
+      opacity: .75;
+    }
+
+    @keyframes explorerOrbit {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotate(360deg); }
     }
 
     /* ===== LIGHT SECTIONS ===== */
@@ -799,7 +1087,7 @@
 
     .track-tags span {
       padding: 7px 10px;
-      border-radius: 9px;
+      border-radius: 11px;
       background: rgba(255,255,255,.08);
       color: #dce3f3;
       font-size: 10px;
@@ -838,7 +1126,7 @@
       height: 31px;
       display: grid;
       place-items: center;
-      border-radius: 9px;
+      border-radius: 11px;
       color: white;
       background: var(--violet);
       font-size: 10px;
@@ -1275,7 +1563,7 @@
 
     .learn-flow span {
       padding: 7px 9px;
-      border-radius: 9px;
+      border-radius: 11px;
       background: #f0edff;
       color: #674ee7;
       font-size: 9px;
@@ -1353,7 +1641,7 @@
       header { width: min(94%, 1180px); }
       .brand { min-width: 0; }
       .brand-name { font-size: 21px; }
-      .brand-sub { font-size: 8px; letter-spacing: .13em; }
+      .brand-sub { font-size: 9px; letter-spacing: .13em; }
       .brand-mark { width: 44px; height: 44px; }
       .hero { padding-top: 115px; }
       .hero h1 { letter-spacing: -3px; }
@@ -1370,6 +1658,1204 @@
         scroll-behavior: auto !important;
       }
     }
+
+
+    /* =========================================================
+       PREMIUM CONTENT SYSTEM — SECTIONS BELOW THE HERO
+       ========================================================= */
+
+    :root {
+      --premium-navy: #0f1630;
+      --premium-navy-2: #151e3d;
+      --premium-violet: #7764f6;
+      --premium-cyan: #38cfd0;
+      --premium-blue: #4f91ff;
+      --premium-gold: #f1b860;
+      --premium-rose: #e978a6;
+
+      --premium-paper: #f7f8fc;
+      --premium-paper-2: #eef1f7;
+      --premium-ink: #161b2e;
+      --premium-muted: #70778c;
+      --premium-border: rgba(33, 42, 73, .10);
+
+      --premium-shadow:
+        0 22px 55px rgba(26, 33, 64, .08),
+        0 2px 8px rgba(26, 33, 64, .035);
+    }
+
+    /* -------- shared premium section rhythm -------- */
+
+    .light.section,
+    #method.light.section {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(119,100,246,.08), transparent 24%),
+        radial-gradient(circle at 96% 18%, rgba(56,207,208,.07), transparent 22%),
+        linear-gradient(180deg, #fbfcff 0%, #f6f7fb 100%);
+    }
+
+    .light.section::before,
+    #method.light.section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(31,40,70,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,40,70,.025) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.42), transparent 72%);
+    }
+
+    .section-head {
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-head .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+
+      color: #6d60e7;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .15em;
+
+      padding: 7px 10px;
+      border-radius: 999px;
+
+      background: rgba(119,100,246,.075);
+      border: 1px solid rgba(119,100,246,.10);
+    }
+
+    .section-head .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--premium-violet), var(--premium-cyan));
+      box-shadow: 0 0 12px rgba(119,100,246,.28);
+    }
+
+    .section-head h2,
+    .method-copy h2 {
+      color: var(--premium-ink);
+      font-size: clamp(38px, 4vw, 52px);
+      font-weight: 900;
+      letter-spacing: -2.4px;
+      line-height: .98;
+    }
+
+    .section-head p,
+    .method-copy p {
+      color: var(--premium-muted);
+      font-size: 14px;
+      line-height: 1.8;
+      font-weight: 500;
+    }
+
+    /* -------- WHY NOWLENS — premium bento grid -------- */
+
+    .benefit-grid {
+      grid-template-columns: 1.22fr .78fr .78fr;
+      grid-auto-rows: minmax(185px, auto);
+      gap: 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .benefit-card {
+      min-height: unset;
+      padding: 26px;
+
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.98), rgba(250,250,254,.96));
+
+      border: 1px solid rgba(34,43,77,.08);
+      border-radius: 24px;
+
+      box-shadow: var(--premium-shadow);
+      overflow: hidden;
+      isolation: isolate;
+
+      transition:
+        transform .28s cubic-bezier(.2,.8,.2,1),
+        box-shadow .28s ease,
+        border-color .28s ease;
+    }
+
+    .benefit-card:first-child {
+      grid-row: span 2;
+      padding: 34px;
+
+      background:
+        radial-gradient(circle at 85% 10%, rgba(119,100,246,.16), transparent 31%),
+        radial-gradient(circle at 15% 92%, rgba(56,207,208,.10), transparent 28%),
+        linear-gradient(145deg, #171d35, #202846);
+
+      color: white;
+      border-color: rgba(255,255,255,.08);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .benefit-card:first-child h3 {
+      color: white;
+      font-size: 27px;
+      max-width: 360px;
+      letter-spacing: -1.2px;
+    }
+
+    .benefit-card:first-child p {
+      color: #b7c0d7;
+      font-size: 13px;
+      max-width: 430px;
+      margin-top: 6px;
+    }
+
+    .benefit-card:first-child .benefit-icon {
+      position: absolute;
+      left: 34px;
+      top: 34px;
+
+      width: 52px;
+      height: 52px;
+
+      background:
+        linear-gradient(145deg, rgba(119,100,246,.20), rgba(56,207,208,.12));
+
+      color: white;
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 12px 28px rgba(0,0,0,.16);
+    }
+
+    .benefit-card:nth-child(2) {
+      background:
+        radial-gradient(circle at 90% 10%, rgba(241,184,96,.15), transparent 32%),
+        white;
+    }
+
+    .benefit-card:nth-child(3) {
+      background:
+        radial-gradient(circle at 90% 10%, rgba(56,207,208,.13), transparent 32%),
+        white;
+    }
+
+    .benefit-card:nth-child(4) {
+      grid-column: 2 / 4;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(233,120,166,.13), transparent 31%),
+        white;
+    }
+
+    .benefit-card::after {
+      width: 110px;
+      height: 110px;
+      right: -38px;
+      top: -42px;
+      opacity: .6;
+      filter: blur(2px);
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(119,100,246,.18);
+      box-shadow:
+        0 28px 66px rgba(29,37,69,.12),
+        0 5px 15px rgba(29,37,69,.05);
+    }
+
+    .benefit-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 15px;
+      font-size: 20px;
+      margin-bottom: 20px;
+
+      background:
+        linear-gradient(145deg, #efedff, #f9f8ff);
+
+      border: 1px solid rgba(119,100,246,.08);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.7);
+    }
+
+    .benefit-card h3 {
+      font-size: 18px;
+      font-weight: 850;
+      letter-spacing: -.5px;
+      color: var(--premium-ink);
+    }
+
+    .benefit-card p {
+      margin-top: 8px;
+      color: var(--premium-muted);
+      font-size: 12.5px;
+      line-height: 1.72;
+    }
+
+    /* -------- TRACKS — premium dark section -------- */
+
+    .track-shell {
+      position: relative;
+      overflow: hidden;
+
+      background:
+        radial-gradient(circle at 13% 16%, rgba(119,100,246,.23), transparent 28%),
+        radial-gradient(circle at 90% 8%, rgba(56,207,208,.11), transparent 24%),
+        linear-gradient(180deg, #11182d 0%, #0e1529 100%);
+
+      border-top: 1px solid rgba(255,255,255,.05);
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+
+    .track-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+
+      background:
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+
+      background-size: 48px 48px;
+      mask-image: radial-gradient(circle at center, black, transparent 75%);
+    }
+
+    .track-shell .section-head h2 {
+      color: white !important;
+    }
+
+    .track-shell .section-head p {
+      color: #aab4ce !important;
+    }
+
+    .track-tabs {
+      position: relative;
+      z-index: 2;
+      width: fit-content;
+      padding: 6px;
+      gap: 4px;
+
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 14px;
+
+      backdrop-filter: blur(14px);
+    }
+
+    .track-tab {
+      border-radius: 10px;
+      padding: 11px 17px;
+
+      color: #aeb8ce;
+      background: transparent;
+      border: 0;
+
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: -.01em;
+
+      transition: .22s ease;
+    }
+
+    .track-tab:hover {
+      color: white;
+      background: rgba(255,255,255,.04);
+    }
+
+    .track-tab.active {
+      color: #11172a;
+      background:
+        linear-gradient(135deg, #ffffff, #edf1ff);
+
+      box-shadow:
+        0 8px 22px rgba(0,0,0,.16),
+        inset 0 0 0 1px rgba(255,255,255,.7);
+    }
+
+    .track-panel {
+      position: relative;
+      z-index: 2;
+      gap: 18px;
+    }
+
+    .track-main,
+    .path-card {
+      min-height: 330px;
+    }
+
+    .track-main {
+      position: relative;
+      overflow: hidden;
+
+      padding: 34px;
+      border-radius: 25px;
+
+      background:
+        radial-gradient(circle at 90% 8%, rgba(119,100,246,.17), transparent 30%),
+        linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+
+      border: 1px solid rgba(255,255,255,.09);
+      box-shadow:
+        0 22px 55px rgba(0,0,0,.17),
+        inset 0 0 0 1px rgba(255,255,255,.015);
+
+      backdrop-filter: blur(16px);
+    }
+
+    .track-main::after {
+      content: "NOWLENS";
+      position: absolute;
+      right: -8px;
+      bottom: -22px;
+
+      color: rgba(255,255,255,.025);
+      font-size: 68px;
+      font-family: var(--heading-font);
+      font-weight: 900;
+      letter-spacing: -5px;
+
+      pointer-events: none;
+    }
+
+    .track-main h3 {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+
+    .track-main p {
+      max-width: 540px;
+      color: #b3bdd4;
+      font-size: 13.5px;
+      line-height: 1.78;
+    }
+
+    .track-tags {
+      margin-top: 26px;
+      gap: 8px;
+    }
+
+    .track-tags span {
+      padding: 8px 11px;
+
+      color: #d8e0ef;
+      background: rgba(255,255,255,.055);
+
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 10px;
+
+      font-size: 10px;
+      font-weight: 750;
+
+      transition: .2s ease;
+    }
+
+    .track-tags span:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.085);
+    }
+
+    .path-card {
+      padding: 30px;
+      border-radius: 25px;
+
+      background:
+        radial-gradient(circle at 100% 0%, rgba(119,100,246,.07), transparent 33%),
+        linear-gradient(180deg, #ffffff, #f7f8fc);
+
+      border: 1px solid rgba(255,255,255,.75);
+
+      box-shadow:
+        0 24px 58px rgba(0,0,0,.19),
+        inset 0 0 0 1px rgba(35,42,71,.035);
+    }
+
+    .path-card h4 {
+      color: #6c7283;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-weight: 900;
+    }
+
+    .path-steps {
+      margin-top: 20px;
+      gap: 10px;
+    }
+
+    .path-step {
+      padding: 13px;
+      gap: 13px;
+
+      background:
+        linear-gradient(145deg, #f8f9fd, #f2f4fa);
+
+      border: 1px solid rgba(40,49,81,.055);
+      border-radius: 14px;
+
+      transition:
+        transform .22s ease,
+        background .22s ease,
+        border-color .22s ease;
+    }
+
+    .path-step:hover {
+      transform: translateX(4px);
+      background: white;
+      border-color: rgba(119,100,246,.13);
+    }
+
+    .path-step b {
+      width: 35px;
+      height: 35px;
+
+      color: white;
+      background:
+        linear-gradient(135deg, var(--premium-violet), #5f7df8);
+
+      border-radius: 10px;
+
+      box-shadow: 0 7px 16px rgba(119,100,246,.22);
+    }
+
+    .path-step strong {
+      color: var(--premium-ink);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .path-step span {
+      margin-top: 2px;
+      color: #81889a;
+      font-size: 10px;
+    }
+
+    /* -------- FEATURED LEARNING PATHS -------- */
+
+    .featured-paths {
+      position: relative;
+      overflow: hidden;
+      padding: 86px 0;
+
+      color: var(--premium-ink);
+
+      background:
+        radial-gradient(circle at 5% 8%, rgba(119,100,246,.085), transparent 26%),
+        radial-gradient(circle at 94% 90%, rgba(56,207,208,.07), transparent 26%),
+        linear-gradient(180deg, #f8f9fd 0%, #f2f4f9 100%);
+
+      border-bottom: 1px solid rgba(38,47,78,.06);
+    }
+
+    .featured-paths::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+
+      background-image:
+        linear-gradient(rgba(35,43,72,.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(35,43,72,.02) 1px, transparent 1px);
+
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+    }
+
+    .featured-header {
+      position: relative;
+      z-index: 2;
+
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 30px;
+
+      margin-bottom: 28px;
+    }
+
+    .featured-header .mini-eyebrow {
+      color: var(--premium-violet);
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+    }
+
+    .featured-header h2 {
+      margin-top: 8px;
+
+      color: var(--premium-ink);
+      font-size: clamp(36px, 4vw, 50px);
+      line-height: .98;
+      letter-spacing: -2.2px;
+      font-weight: 900;
+    }
+
+    .featured-header p {
+      max-width: 500px;
+      color: var(--premium-muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .featured-grid {
+      position: relative;
+      z-index: 2;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .featured-card {
+      position: relative;
+      overflow: hidden;
+
+      min-height: 300px;
+      padding: 26px;
+
+      border-radius: 24px;
+
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.98), rgba(249,250,253,.96));
+
+      border: 1px solid rgba(35,44,75,.08);
+
+      box-shadow: var(--premium-shadow);
+
+      transition:
+        transform .28s ease,
+        box-shadow .28s ease;
+    }
+
+    .featured-card:hover {
+      transform: translateY(-7px);
+      box-shadow:
+        0 30px 66px rgba(27,35,68,.12),
+        0 4px 14px rgba(27,35,68,.04);
+    }
+
+    .featured-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 4px;
+
+      background:
+        linear-gradient(90deg, var(--premium-violet), var(--premium-blue));
+    }
+
+    .featured-card.itam-path::before {
+      background:
+        linear-gradient(90deg, var(--premium-gold), #e99156);
+    }
+
+    .featured-card.ai-path::before {
+      background:
+        linear-gradient(90deg, var(--premium-cyan), #42a5e7);
+    }
+
+    .featured-track {
+      color: #858b9b;
+      font-size: 9px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+    }
+
+    .featured-card h3 {
+      margin-top: 9px;
+
+      color: var(--premium-ink);
+      font-size: 23px;
+      line-height: 1.05;
+      letter-spacing: -1px;
+      font-weight: 900;
+    }
+
+    .featured-card > p {
+      margin-top: 10px;
+
+      color: var(--premium-muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .featured-sequence {
+      display: grid;
+      gap: 7px;
+      margin-top: 20px;
+    }
+
+    .featured-step {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
+      padding: 9px 10px;
+
+      color: #495066;
+      background: #f5f6fa;
+
+      border: 1px solid rgba(39,48,78,.045);
+      border-radius: 10px;
+
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .featured-step i {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--premium-violet);
+      box-shadow: 0 0 9px rgba(119,100,246,.24);
+    }
+
+    .itam-path .featured-step i {
+      background: var(--premium-gold);
+    }
+
+    .ai-path .featured-step i {
+      background: var(--premium-cyan);
+    }
+
+    /* -------- HOW WE TEACH — premium timeline feel -------- */
+
+    #method.light.section {
+      background:
+        radial-gradient(circle at 14% 10%, rgba(119,100,246,.085), transparent 26%),
+        radial-gradient(circle at 88% 85%, rgba(56,207,208,.06), transparent 27%),
+        linear-gradient(180deg, #fcfcff, #f5f7fb);
+    }
+
+    .method-grid {
+      grid-template-columns: .82fr 1.18fr;
+      gap: 52px;
+    }
+
+    .method-copy {
+      position: sticky;
+      top: 130px;
+      align-self: start;
+    }
+
+    .method-copy .eyebrow {
+      display: inline-flex;
+      align-items: center;
+
+      padding: 7px 10px;
+      border-radius: 999px;
+
+      color: #6859e7;
+      background: rgba(119,100,246,.075);
+      border: 1px solid rgba(119,100,246,.10);
+
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+    }
+
+    .method-copy h2 {
+      margin-top: 14px;
+    }
+
+    .method-flow {
+      position: relative;
+
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .method-flow::before {
+      content: "";
+      position: absolute;
+      left: 25px;
+      top: 36px;
+      bottom: 36px;
+
+      width: 1px;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(119,100,246,.15),
+          rgba(56,207,208,.28),
+          rgba(119,100,246,.06)
+        );
+    }
+
+    .method-card {
+      position: relative;
+
+      min-height: 125px;
+      padding: 24px 24px 24px 76px;
+
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.98), rgba(248,249,253,.96));
+
+      border: 1px solid rgba(34,43,76,.075);
+      border-radius: 20px;
+
+      box-shadow:
+        0 16px 38px rgba(29,36,68,.065);
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+    }
+
+    .method-card:hover {
+      transform: translateX(5px);
+      border-color: rgba(119,100,246,.15);
+
+      box-shadow:
+        0 22px 48px rgba(29,36,68,.09);
+    }
+
+    .method-card::before {
+      opacity: 1;
+
+      background:
+        linear-gradient(100deg, rgba(119,100,246,.035), transparent 44%, rgba(56,207,208,.025));
+    }
+
+    .method-number {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      width: 42px;
+      height: 42px;
+
+      margin: 0;
+
+      color: white;
+
+      background:
+        linear-gradient(135deg, var(--premium-violet), #627cf8);
+
+      border: 5px solid #f7f8fc;
+      border-radius: 50%;
+
+      box-shadow:
+        0 8px 20px rgba(119,100,246,.20);
+    }
+
+    .method-card:nth-child(2) .method-number {
+      background:
+        linear-gradient(135deg, #6d7ff6, var(--premium-cyan));
+    }
+
+    .method-card:nth-child(3) .method-number {
+      background:
+        linear-gradient(135deg, var(--premium-cyan), #3fa6e7);
+    }
+
+    .method-card:nth-child(4) .method-number {
+      background:
+        linear-gradient(135deg, #52b5d4, #6285f5);
+    }
+
+    .method-card h4 {
+      color: var(--premium-ink);
+      font-size: 17px;
+      font-weight: 850;
+    }
+
+    .method-card p {
+      max-width: 560px;
+      margin-top: 6px;
+
+      color: var(--premium-muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    /* -------- CATALOG — richer product cards -------- */
+
+    .catalog {
+      position: relative;
+      overflow: hidden;
+
+      background:
+        radial-gradient(circle at 90% 8%, rgba(119,100,246,.07), transparent 25%),
+        linear-gradient(180deg, #eef1f7 0%, #e9edf5 100%);
+    }
+
+    .catalog::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+
+      background:
+        linear-gradient(rgba(38,47,78,.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(38,47,78,.02) 1px, transparent 1px);
+
+      background-size: 46px 46px;
+    }
+
+    #catalog .section-head,
+    .catalog-toolbar,
+    .course-grid {
+      position: relative;
+      z-index: 2;
+    }
+
+    .catalog-toolbar {
+      padding: 10px;
+
+      background: rgba(255,255,255,.62);
+      border: 1px solid rgba(34,43,74,.07);
+      border-radius: 16px;
+
+      backdrop-filter: blur(12px);
+
+      box-shadow:
+        0 12px 30px rgba(31,38,68,.05);
+    }
+
+    .search input {
+      border: 0;
+      border-radius: 11px;
+
+      background: rgba(255,255,255,.82);
+
+      box-shadow:
+        inset 0 0 0 1px rgba(35,44,75,.06);
+
+      transition:
+        box-shadow .2s ease,
+        background .2s ease;
+    }
+
+    .search input:focus {
+      background: white;
+      box-shadow:
+        inset 0 0 0 1px rgba(119,100,246,.25),
+        0 0 0 4px rgba(119,100,246,.055);
+    }
+
+    .filter-btn {
+      border: 0;
+      border-radius: 10px;
+
+      background: transparent;
+    }
+
+    .filter-btn:hover {
+      background: rgba(24,31,56,.045);
+    }
+
+    .filter-btn.active {
+      background:
+        linear-gradient(135deg, #171d35, #252d4d);
+
+      box-shadow:
+        0 8px 18px rgba(22,27,49,.16);
+    }
+
+    .course-grid {
+      gap: 18px;
+    }
+
+    .course-card {
+      border-radius: 22px;
+      border: 1px solid rgba(33,42,72,.075);
+
+      box-shadow:
+        0 15px 36px rgba(28,35,67,.065);
+
+      background:
+        linear-gradient(180deg, #ffffff, #fcfcfe);
+
+      transform-origin: center bottom;
+    }
+
+    .course-card:hover {
+      transform: translateY(-8px) scale(1.012);
+
+      box-shadow:
+        0 28px 60px rgba(28,35,67,.12);
+    }
+
+    .course-cover {
+      min-height: 142px;
+      padding: 22px;
+
+      background:
+        radial-gradient(circle at 88% 0%, rgba(255,255,255,.20), transparent 30%),
+        linear-gradient(145deg, #5f55dc, #8172fa 60%, #6f8cf7);
+    }
+
+    .course-card.itam .course-cover {
+      background:
+        radial-gradient(circle at 88% 0%, rgba(255,255,255,.20), transparent 30%),
+        linear-gradient(145deg, #c98533, #eda94e 60%, #f0be69);
+    }
+
+    .course-card.ai .course-cover {
+      background:
+        radial-gradient(circle at 88% 0%, rgba(255,255,255,.18), transparent 30%),
+        linear-gradient(145deg, #168e8e, #27bbb9 60%, #4ac9d6);
+    }
+
+    .course-label {
+      padding: 6px 9px;
+
+      color: rgba(255,255,255,.92);
+
+      background: rgba(9,13,27,.12);
+      border: 1px solid rgba(255,255,255,.14);
+
+      backdrop-filter: blur(8px);
+    }
+
+    .course-body {
+      padding: 22px;
+    }
+
+    .course-body h3 {
+      color: var(--premium-ink);
+      font-size: 19px;
+      font-weight: 850;
+      letter-spacing: -.55px;
+    }
+
+    .course-body p {
+      color: var(--premium-muted);
+      font-size: 12.2px;
+      line-height: 1.7;
+    }
+
+    .course-meta {
+      padding-top: 14px;
+      border-top: 1px solid rgba(34,43,74,.06);
+
+      color: #8a90a1;
+    }
+
+    .course-btn {
+      position: relative;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(145deg, #f1f2f7, #eceef5);
+
+      border: 1px solid rgba(34,43,74,.055);
+
+      font-size: 11px;
+      font-weight: 850;
+
+      transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
+    }
+
+    .course-btn:hover {
+      color: white;
+      background:
+        linear-gradient(135deg, #171d35, #293354);
+
+      transform: translateY(-1px);
+    }
+
+    /* -------- PROGRESS — dashboard-like premium -------- */
+
+    .progress-wrap {
+      position: relative;
+      overflow: hidden;
+
+      padding: 92px 0;
+
+      background:
+        radial-gradient(circle at 10% 10%, rgba(119,100,246,.07), transparent 28%),
+        linear-gradient(180deg, #fafbfe, #f3f5fa);
+    }
+
+    .progress-card {
+      position: relative;
+      overflow: hidden;
+
+      min-height: 265px;
+      padding: 38px;
+
+      border-radius: 28px;
+
+      background:
+        radial-gradient(circle at 90% 10%, rgba(119,100,246,.23), transparent 30%),
+        radial-gradient(circle at 8% 88%, rgba(56,207,208,.11), transparent 30%),
+        linear-gradient(135deg, #141a30, #202943);
+
+      border: 1px solid rgba(255,255,255,.07);
+
+      box-shadow:
+        0 34px 78px rgba(22,29,52,.20);
+    }
+
+    .progress-card::after {
+      content: "NOWLENS";
+      position: absolute;
+      right: 25px;
+      bottom: -18px;
+
+      color: rgba(255,255,255,.025);
+
+      font-family: var(--heading-font);
+      font-size: 76px;
+      font-weight: 900;
+      letter-spacing: -6px;
+
+      pointer-events: none;
+    }
+
+    .progress-card h3 {
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+    }
+
+    .progress-card p {
+      color: #aeb8cf;
+      font-size: 12.5px;
+    }
+
+    .progress-bar {
+      height: 9px;
+      margin-top: 24px;
+
+      background: rgba(255,255,255,.075);
+      border: 1px solid rgba(255,255,255,.045);
+    }
+
+    .progress-bar div {
+      background:
+        linear-gradient(90deg, #7964f6, #4f91ff, #38cfd0);
+    }
+
+    .progress-stat {
+      padding: 22px 16px;
+
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
+
+      border: 1px solid rgba(255,255,255,.065);
+      border-radius: 18px;
+
+      backdrop-filter: blur(14px);
+    }
+
+    .progress-stat strong {
+      font-size: 30px;
+      font-weight: 900;
+    }
+
+    /* -------- FOOTER — premium branded close -------- */
+
+    footer {
+      position: relative;
+      overflow: hidden;
+
+      padding: 58px 5% 46px;
+
+      color: #818ca8;
+
+      background:
+        radial-gradient(circle at 50% 120%, rgba(119,100,246,.13), transparent 35%),
+        linear-gradient(180deg, #0c1121, #080d18);
+
+      border-top: 1px solid rgba(255,255,255,.05);
+
+      font-size: 10px;
+      line-height: 1.8;
+    }
+
+    footer strong {
+      display: inline-block;
+      margin-right: 4px;
+
+      color: white;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: -.4px;
+    }
+
+    /* -------- responsive premium system -------- */
+
+    @media (max-width: 980px) {
+      .benefit-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .benefit-card:first-child {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        min-height: 300px;
+      }
+
+      .benefit-card:nth-child(4) {
+        grid-column: auto;
+      }
+
+      .featured-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .method-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .method-copy {
+        position: static;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .benefit-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .benefit-card:first-child,
+      .benefit-card:nth-child(4) {
+        grid-column: auto;
+      }
+
+      .featured-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .track-main,
+      .path-card {
+        min-height: unset;
+      }
+
+      .method-card {
+        padding-left: 70px;
+      }
+
+      .catalog-toolbar {
+        padding: 8px;
+      }
+    }
+
+
   </style>
 </head>
 
@@ -1428,15 +2914,15 @@
       </div>
 
       <h1>
-        Learn it.<br>
-        See it.<br>
-        <em>Understand it.</em>
+        Learn.<br>
+        Build.<br>
+        <em>Grow.</em>
       </h1>
 
       <p>
-        <strong style="color:white;">NowLens</strong> makes ServiceNow easier to learn with structured courses,
-        visual explanations, guided demos, hands-on labs and practical exercises.
-        Start with the fundamentals and build real confidence across ITOM, ITAM and Now Assist.
+        <strong style="color:white;">NowLens</strong> helps you learn ServiceNow through structured courses,
+        guided demos, visual explanations and hands-on practice.
+        Build real skills step by step and grow your confidence across ITOM, ITAM and Now Assist.
       </p>
 
       <div class="hero-actions">
@@ -1462,6 +2948,19 @@
 
     <div class="visual">
 
+      <div class="launch-line" aria-hidden="true"></div>
+
+      <div class="explorer-orbit" aria-hidden="true">
+        <div class="learning-explorer">
+          <div class="explorer-trail"></div>
+          <div class="explorer-flame"></div>
+          <div class="explorer-fin"></div>
+          <div class="explorer-body"></div>
+          <div class="explorer-window"></div>
+          <div class="explorer-nose"></div>
+        </div>
+      </div>
+
       <div class="orbit">
         <div class="dot"></div>
         <div class="dot"></div>
@@ -1470,19 +2969,56 @@
 
       <div class="orbit orbit-2"></div>
 
-      <div class="mini-card one">
-        <strong>Discovery</strong>
-        <span>Understand how infrastructure is found</span>
-      </div>
+      <div class="topic-orbit" aria-hidden="true">
 
-      <div class="mini-card two">
-        <strong>Software Asset Mgmt</strong>
-        <span>Learn normalization & reconciliation</span>
-      </div>
+        <div class="topic-node n1">
+          <div class="topic-code">MID</div>
+          <strong>MID Server</strong>
+          <small>Connectivity</small>
+        </div>
 
-      <div class="mini-card three">
-        <strong>Now Assist</strong>
-        <span>Learn enterprise AI step-by-step</span>
+        <div class="topic-node n2">
+          <div class="topic-code">DSC</div>
+          <strong>Discovery</strong>
+          <small>Infra</small>
+        </div>
+
+        <div class="topic-node n3">
+          <div class="topic-code">NA</div>
+          <strong>Now Assist</strong>
+          <small>Enterprise AI</small>
+        </div>
+
+        <div class="topic-node n4">
+          <div class="topic-code">AIA</div>
+          <strong>AI Agents</strong>
+          <small>Agentic AI</small>
+        </div>
+
+        <div class="topic-node n5">
+          <div class="topic-code">SAM</div>
+          <strong>SAM</strong>
+          <small>Software</small>
+        </div>
+
+        <div class="topic-node n6">
+          <div class="topic-code">CDB</div>
+          <strong>CMDB</strong>
+          <small>CI data</small>
+        </div>
+
+        <div class="topic-node n7">
+          <div class="topic-code">HAM</div>
+          <strong>HAM</strong>
+          <small>Hardware</small>
+        </div>
+
+        <div class="topic-node n8">
+          <div class="topic-code">EM</div>
+          <strong>Event Mgmt</strong>
+          <small>Events & alerts</small>
+        </div>
+
       </div>
 
       <div class="center-card">
@@ -1657,6 +3193,79 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+
+<section class="featured-paths">
+  <div class="container">
+
+    <div class="featured-header reveal">
+      <div>
+        <div class="mini-eyebrow">Featured Learning Paths</div>
+        <h2>Know where to start.</h2>
+      </div>
+
+      <p>
+        Instead of guessing what to study next, follow a guided sequence that builds
+        the right foundation before moving into deeper ServiceNow topics.
+      </p>
+    </div>
+
+    <div class="featured-grid">
+
+      <article class="featured-card reveal">
+        <div class="featured-track">ITOM PATH</div>
+        <h3>Build your ITOM foundation.</h3>
+        <p>
+          Start with connectivity and discovery, then move into operational data,
+          events and service visibility.
+        </p>
+
+        <div class="featured-sequence">
+          <div class="featured-step"><i></i>MID Server</div>
+          <div class="featured-step"><i></i>Discovery</div>
+          <div class="featured-step"><i></i>CMDB</div>
+          <div class="featured-step"><i></i>Event Management</div>
+          <div class="featured-step"><i></i>Service Mapping</div>
+        </div>
+      </article>
+
+      <article class="featured-card itam-path reveal">
+        <div class="featured-track">ITAM PATH</div>
+        <h3>Understand the asset lifecycle.</h3>
+        <p>
+          Build from asset foundations into hardware, software, entitlements and
+          reconciliation concepts.
+        </p>
+
+        <div class="featured-sequence">
+          <div class="featured-step"><i></i>Asset Foundations</div>
+          <div class="featured-step"><i></i>Hardware Asset Management</div>
+          <div class="featured-step"><i></i>Software Asset Management</div>
+          <div class="featured-step"><i></i>Entitlements</div>
+          <div class="featured-step"><i></i>Reconciliation</div>
+        </div>
+      </article>
+
+      <article class="featured-card ai-path reveal">
+        <div class="featured-track">NOW ASSIST PATH</div>
+        <h3>Learn enterprise AI step by step.</h3>
+        <p>
+          Start with AI essentials, then understand the common Now Assist services
+          before moving into agents and ITSM experiences.
+        </p>
+
+        <div class="featured-sequence">
+          <div class="featured-step"><i></i>AI Essentials</div>
+          <div class="featured-step"><i></i>Now Assist Admin & AI Search</div>
+          <div class="featured-step"><i></i>Skill Kit, Data Kit & GAIC</div>
+          <div class="featured-step"><i></i>Virtual Agent & Panel</div>
+          <div class="featured-step"><i></i>AI Agents & Now Assist for ITSM</div>
+        </div>
+      </article>
+
+    </div>
   </div>
 </section>
 
