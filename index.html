@@ -3610,18 +3610,42 @@ function updateProgress() {
 }
 
 function updateVisitorCounter() {
-  const key = 'nowlensVisitorData';
-  const today = new Date().toISOString().slice(0, 10);
-  const data = JSON.parse(localStorage.getItem(key) || '{}');
-
-  if (!data[today]) data[today] = 0;
-  data[today] = Number(data[today]) + 1;
-
-  localStorage.setItem(key, JSON.stringify(data));
-
-  const total = Object.values(data).reduce((sum, value) => sum + Number(value), 0);
   const counter = document.getElementById('visitorCount');
-  if (counter) counter.textContent = total.toLocaleString();
+  if (!counter) return;
+
+  const fallbackKey = 'nowlensManualVisitorCount';
+  const sessionKey = 'nowlensVisitTracked';
+
+  const setCount = (value) => {
+    counter.textContent = Number(value || 0).toLocaleString();
+  };
+
+  const loadLocalFallback = () => {
+    const fallback = Number(localStorage.getItem(fallbackKey) || 0);
+    setCount(fallback);
+  };
+
+  if (sessionStorage.getItem(sessionKey)) {
+    fetch('https://api.countapi.xyz/get/nowlens-prod/visits')
+      .then(response => response.ok ? response.json() : Promise.reject())
+      .then(data => setCount(data.value))
+      .catch(loadLocalFallback);
+    return;
+  }
+
+  sessionStorage.setItem(sessionKey, '1');
+
+  fetch('https://api.countapi.xyz/hit/nowlens-prod/visits')
+    .then(response => response.ok ? response.json() : Promise.reject())
+    .then(data => {
+      setCount(data.value);
+      localStorage.setItem(fallbackKey, String(data.value));
+    })
+    .catch(() => {
+      const fallback = Number(localStorage.getItem(fallbackKey) || 0) + 1;
+      localStorage.setItem(fallbackKey, String(fallback));
+      setCount(fallback);
+    });
 }
 
 function scrollToId(id) {
