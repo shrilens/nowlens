@@ -109,7 +109,6 @@
       gap: 13px;
       min-width: 255px;
       position: relative;
-      animation: brandFloat 5s ease-in-out infinite;
     }
 
     .brand::after {
@@ -122,7 +121,6 @@
       border-radius: 999px;
       background: linear-gradient(90deg, var(--violet), var(--cyan), transparent);
       opacity: .8;
-      box-shadow: 0 0 18px rgba(124,92,255,.4);
     }
 
     .brand-mark {
@@ -138,11 +136,9 @@
         linear-gradient(145deg, var(--violet), var(--pink));
       box-shadow:
         0 10px 28px rgba(124,92,255,.42),
-        0 0 0 1px rgba(255,255,255,.10) inset,
-        0 0 22px rgba(124,92,255,.3);
+        0 0 0 1px rgba(255,255,255,.10) inset;
       position: relative;
       overflow: hidden;
-      animation: brandMarkPulse 2.8s ease-in-out infinite;
     }
 
     .brand-mark::before {
@@ -153,9 +149,8 @@
       transform: rotate(-35deg);
       top: -8px;
       left: -18px;
-      background: rgba(255,255,255,.28);
+      background: rgba(255,255,255,.22);
       filter: blur(5px);
-      animation: logoShine 3.6s ease-in-out infinite;
     }
 
     .brand-mark::after {
@@ -163,7 +158,7 @@
       position: absolute;
       inset: 0;
       border-radius: inherit;
-      background: linear-gradient(135deg, rgba(255,255,255,.25), transparent 45%, rgba(255,255,255,.12));
+      background: linear-gradient(135deg, rgba(255,255,255,.18), transparent 45%, rgba(255,255,255,.08));
       opacity: .9;
     }
 
@@ -178,12 +173,10 @@
       line-height: .95;
       font-weight: 900;
       letter-spacing: -1.55px;
-      background: linear-gradient(90deg, #ffffff 0%, #eef3ff 18%, #d7d0ff 42%, #c2f3ff 62%, #ffffff 100%);
+      background: linear-gradient(90deg, #ffffff 0%, #d7d0ff 42%, #72f2ef 100%);
       -webkit-background-clip: text;
-      background-size: 200% 100%;
       color: transparent;
-      text-shadow: 0 0 28px rgba(124,92,255,.22);
-      animation: brandPulse 4s ease-in-out infinite alternate;
+      text-shadow: 0 0 18px rgba(124,92,255,.12);
       display: inline-block;
     }
 
@@ -276,44 +269,6 @@
     @keyframes pulseDot {
       0%, 100% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.4); opacity: .7; }
-    }
-
-    @keyframes flashBrand {
-      0% { opacity: .8; transform: translateY(0); text-shadow: 0 0 8px rgba(255,255,255,.2); }
-      50% { opacity: 1; transform: translateY(-1px); text-shadow: 0 0 14px rgba(255,255,255,.45), 0 0 24px rgba(124,92,255,.28); }
-      100% { opacity: .9; transform: translateY(0); text-shadow: 0 0 12px rgba(140,230,255,.26); }
-    }
-
-    @keyframes logoShine {
-      0% { transform: translateX(-24px) rotate(-35deg); opacity: 0; }
-      15% { opacity: .8; }
-      50% { transform: translateX(26px) rotate(-35deg); opacity: 1; }
-      100% { transform: translateX(48px) rotate(-35deg); opacity: 0; }
-    }
-
-    @keyframes brandMarkPulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 10px 28px rgba(124,92,255,.42), 0 0 0 1px rgba(255,255,255,.10) inset, 0 0 10px rgba(124,92,255,.14); }
-      50% { transform: scale(1.06); box-shadow: 0 16px 36px rgba(124,92,255,.52), 0 0 0 1px rgba(255,255,255,.12) inset, 0 0 26px rgba(124,92,255,.3); }
-    }
-
-    @keyframes brandFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-3px); }
-    }
-
-    @keyframes brandPulse {
-      0% {
-        background-position: 0% 50%;
-        filter: brightness(1) drop-shadow(0 0 0 rgba(255,255,255,0));
-      }
-      50% {
-        background-position: 100% 50%;
-        filter: brightness(1.12) drop-shadow(0 0 10px rgba(206,210,255,.5));
-      }
-      100% {
-        background-position: 0% 50%;
-        filter: brightness(1.2) drop-shadow(0 0 18px rgba(159,231,255,.35));
-      }
     }
 
     .hero h1 {
