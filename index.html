@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="NowLens - Learn ServiceNow AI, Otto, Now Assist, AI Agents, AI Control Tower and practical enterprise AI use cases." />
-  <title>NowLens | Learn ServiceNow AI</title>
+  <meta name="description" content="NowLens - Learn ServiceNow through structured lessons, visual explanations, labs and practical exercises across ITOM, ITAM and Now Assist." />
+  <title>NowLens | Learn ServiceNow Differently</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%238d75ff'/%3E%3Cstop offset='0.5' stop-color='%236b5ef7'/%3E%3Cstop offset='1' stop-color='%2326d7d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='2' y='2' width='60' height='60' rx='18' fill='%230f172d'/%3E%3Crect x='2' y='2' width='60' height='60' rx='18' fill='url(%23g)'/%3E%3Cpath d='M18 46V18h8l12 20V18h8v28h-8L26 26v20z' fill='white'/%3E%3C/svg%3E" />
   <meta name="theme-color" content="#0b1020" />
@@ -2856,53 +2861,549 @@
     }
 
 
-  
-    /* ===== AI CONTENT ONLY: SAFE PRODUCTION OVERRIDES ===== */
 
-    .hero-metrics .metric strong {
-      font-size: 16px;
-      letter-spacing: -.4px;
+    h1, h2, h3, h4, .brand-name, .center-card h3,
+    .section-head h2, .method-copy h2, .featured-header h2,
+    .track-main h3, .course-body h3, .progress-card h3 {
+      font-family: var(--heading-font);
     }
 
-    .hero-metrics .metric span {
-      margin-top: 3px;
+
+
+    /* =========================================================
+       PREMIUM EDITORIAL REDESIGN
+       ========================================================= */
+
+    .premium-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      color: #8d82ff;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .20em;
+      text-transform: uppercase;
     }
 
-    .featured-grid {
-      align-items: stretch;
+    .premium-kicker::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: linear-gradient(90deg, #7e67ff, #3bd4d2);
     }
 
-    .course-card.foundation .course-cover {
+    /* -------- CURATED PATHS -------- */
+
+    .premium-paths {
+      position: relative;
+      overflow: hidden;
+      padding: 110px 0 120px;
+
+      color: white;
+
       background:
-        radial-gradient(circle at 90% 0%, rgba(255,255,255,.18), transparent 32%),
-        linear-gradient(145deg, #6657df, #8170f5);
+        radial-gradient(circle at 12% 15%, rgba(119,100,246,.24), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(56,207,208,.12), transparent 30%),
+        linear-gradient(180deg, #0d1428 0%, #111a32 100%);
     }
 
-    .course-card.experience .course-cover {
+    .premium-paths::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      pointer-events: none;
+
+      background-image:
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+
+      background-size: 54px 54px;
+      mask-image: radial-gradient(circle at center, black, transparent 82%);
+    }
+
+    .premium-paths-head {
+      position: relative;
+      z-index: 2;
+
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 70px;
+      align-items: end;
+
+      margin-bottom: 46px;
+    }
+
+    .premium-paths-head h2 {
+      margin-top: 14px;
+
+      color: white;
+      font-size: clamp(46px, 5vw, 68px);
+      line-height: .94;
+      letter-spacing: -3.5px;
+      font-weight: 700;
+    }
+
+    .premium-paths-head h2 em {
+      font-style: normal;
+
+      background: linear-gradient(90deg, #aa9cff, #5f9cff, #47d7d4);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .premium-paths-head p {
+      max-width: 500px;
+
+      color: #9ea9c1;
+      font-size: 13.5px;
+      line-height: 1.82;
+      font-weight: 500;
+    }
+
+    .journey-grid {
+      position: relative;
+      z-index: 2;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .journey-card {
+      position: relative;
+      overflow: hidden;
+
+      min-height: 520px;
+      padding: 28px;
+
+      border-radius: 26px;
+
       background:
-        radial-gradient(circle at 90% 0%, rgba(255,255,255,.18), transparent 32%),
-        linear-gradient(145deg, #25869a, #3bbab3);
+        linear-gradient(145deg, rgba(255,255,255,.085), rgba(255,255,255,.025));
+
+      border: 1px solid rgba(255,255,255,.085);
+
+      box-shadow:
+        0 32px 70px rgba(0,0,0,.22),
+        inset 0 0 0 1px rgba(255,255,255,.01);
+
+      backdrop-filter: blur(16px);
+
+      transition:
+        transform .28s cubic-bezier(.2,.8,.2,1),
+        border-color .28s ease,
+        background .28s ease;
     }
 
-    .course-card.build .course-cover {
+    .journey-card::before {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      right: -100px;
+      top: -110px;
+      border-radius: 50%;
+
+      background: rgba(119,100,246,.12);
+      filter: blur(4px);
+      pointer-events: none;
+    }
+
+    .journey-itam::before {
+      background: rgba(241,184,96,.10);
+    }
+
+    .journey-ai::before {
+      background: rgba(56,207,208,.10);
+    }
+
+    .journey-card:hover {
+      transform: translateY(-9px);
+
+      border-color: rgba(255,255,255,.15);
+
       background:
-        radial-gradient(circle at 90% 0%, rgba(255,255,255,.18), transparent 32%),
-        linear-gradient(145deg, #4771ba, #6295e6);
+        linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.035));
     }
 
-    .course-card.agentic .course-cover {
+    .journey-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 70px;
+    }
+
+    .journey-number {
+      color: rgba(255,255,255,.12);
+
+      font-family: var(--heading-font);
+      font-size: 52px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: -3px;
+    }
+
+    .journey-label {
+      padding: 7px 10px;
+      border-radius: 999px;
+
+      color: #c9c5ff;
+
+      background: rgba(119,100,246,.10);
+      border: 1px solid rgba(119,100,246,.18);
+
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .16em;
+    }
+
+    .journey-itam .journey-label {
+      color: #f1c883;
+      background: rgba(241,184,96,.08);
+      border-color: rgba(241,184,96,.15);
+    }
+
+    .journey-ai .journey-label {
+      color: #79dfdf;
+      background: rgba(56,207,208,.08);
+      border-color: rgba(56,207,208,.15);
+    }
+
+    .journey-card h3 {
+      position: relative;
+
+      max-width: 330px;
+
+      color: white;
+      font-size: 27px;
+      line-height: 1.06;
+      letter-spacing: -1.25px;
+      font-weight: 650;
+    }
+
+    .journey-card > p {
+      position: relative;
+
+      max-width: 360px;
+      margin-top: 12px;
+
+      color: #9ea8c0;
+      font-size: 12.2px;
+      line-height: 1.75;
+    }
+
+    .journey-flow {
+      position: relative;
+
+      display: grid;
+      gap: 0;
+
+      margin-top: 28px;
+
+      border-top: 1px solid rgba(255,255,255,.065);
+    }
+
+    .journey-flow > div {
+      display: grid;
+      grid-template-columns: 27px 1fr;
+      grid-template-rows: auto auto;
+      column-gap: 10px;
+
+      padding: 13px 0;
+
+      border-bottom: 1px solid rgba(255,255,255,.055);
+
+      transition:
+        padding-left .2s ease,
+        background .2s ease;
+    }
+
+    .journey-flow > div:hover {
+      padding-left: 5px;
+    }
+
+    .journey-flow span {
+      grid-row: 1 / 3;
+
+      color: #777ff2;
+
+      font-family: var(--heading-font);
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .journey-itam .journey-flow span {
+      color: #dca754;
+    }
+
+    .journey-ai .journey-flow span {
+      color: #37bfc0;
+    }
+
+    .journey-flow b {
+      color: #e8edf8;
+      font-size: 10.5px;
+      font-weight: 700;
+    }
+
+    .journey-flow small {
+      margin-top: 2px;
+
+      color: #77839e;
+      font-size: 8.5px;
+      font-weight: 500;
+    }
+
+    /* -------- PREMIUM METHOD -------- */
+
+    .premium-method {
+      position: relative;
+      overflow: hidden;
+
+      padding: 120px 0;
+
+      color: white;
+
       background:
-        radial-gradient(circle at 90% 0%, rgba(255,255,255,.18), transparent 32%),
-        linear-gradient(145deg, #7453d3, #9b6ee3);
+        radial-gradient(circle at 8% 15%, rgba(119,100,246,.15), transparent 28%),
+        radial-gradient(circle at 90% 85%, rgba(56,207,208,.08), transparent 30%),
+        linear-gradient(180deg, #11182d, #0d1428);
+
+      border-top: 1px solid rgba(255,255,255,.04);
     }
 
-    .course-card.govern .course-cover {
+    .premium-method::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+
       background:
-        radial-gradient(circle at 90% 0%, rgba(255,255,255,.15), transparent 32%),
-        linear-gradient(145deg, #33405f, #596784);
+        linear-gradient(rgba(255,255,255,.014) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.014) 1px, transparent 1px);
+
+      background-size: 58px 58px;
+      mask-image: linear-gradient(to right, black, transparent 82%);
     }
 
-</style>
+    .premium-method-grid {
+      position: relative;
+      z-index: 2;
+
+      display: grid;
+      grid-template-columns: .86fr 1.14fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .premium-method-copy {
+      position: sticky;
+      top: 135px;
+    }
+
+    .premium-method-copy h2 {
+      margin-top: 18px;
+
+      color: white;
+      font-size: clamp(46px, 5vw, 66px);
+      line-height: .94;
+      letter-spacing: -3.2px;
+      font-weight: 700;
+    }
+
+    .premium-method-copy h2 em {
+      font-style: normal;
+
+      background:
+        linear-gradient(90deg, #a596ff, #589cff, #47d6d3);
+
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .premium-method-copy > p {
+      max-width: 480px;
+      margin-top: 24px;
+
+      color: #9ba6bf;
+      font-size: 13.2px;
+      line-height: 1.85;
+    }
+
+    .method-quote {
+      margin-top: 48px;
+      padding-left: 18px;
+
+      color: #cfd6e7;
+
+      border-left: 1px solid rgba(91,211,211,.35);
+
+      font-family: var(--heading-font);
+      font-size: 15px;
+      line-height: 1.55;
+      font-weight: 500;
+      letter-spacing: -.25px;
+    }
+
+    .premium-method-steps {
+      position: relative;
+
+      display: grid;
+      gap: 13px;
+    }
+
+    .premium-step {
+      position: relative;
+      overflow: hidden;
+
+      min-height: 165px;
+      padding: 28px;
+
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 24px;
+      align-items: center;
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.072), rgba(255,255,255,.023));
+
+      border: 1px solid rgba(255,255,255,.075);
+
+      box-shadow:
+        0 22px 50px rgba(0,0,0,.16);
+
+      backdrop-filter: blur(14px);
+
+      transition:
+        transform .26s ease,
+        background .26s ease,
+        border-color .26s ease;
+    }
+
+    .premium-step:hover {
+      transform: translateX(8px);
+
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.095), rgba(255,255,255,.032));
+
+      border-color: rgba(255,255,255,.12);
+    }
+
+    .premium-step::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+
+      background:
+        linear-gradient(to bottom, transparent, #7c66f7, transparent);
+    }
+
+    .premium-step:nth-child(2)::before {
+      background:
+        linear-gradient(to bottom, transparent, #5796f8, transparent);
+    }
+
+    .premium-step:nth-child(3)::before {
+      background:
+        linear-gradient(to bottom, transparent, #38cfd0, transparent);
+    }
+
+    .premium-step:nth-child(4)::before {
+      background:
+        linear-gradient(to bottom, transparent, #6bc1d8, transparent);
+    }
+
+    .step-index {
+      color: rgba(255,255,255,.12);
+
+      font-family: var(--heading-font);
+      font-size: 56px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: -4px;
+    }
+
+    .step-kicker {
+      color: #737f9c;
+
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .16em;
+    }
+
+    .step-content h3 {
+      margin-top: 6px;
+
+      color: white;
+
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: -1px;
+      font-weight: 650;
+    }
+
+    .step-content p {
+      max-width: 520px;
+      margin-top: 9px;
+
+      color: #939fb8;
+      font-size: 11.5px;
+      line-height: 1.72;
+    }
+
+    @media (max-width: 1050px) {
+      .premium-paths-head,
+      .premium-method-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .journey-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .journey-card {
+        min-height: unset;
+      }
+
+      .premium-method-copy {
+        position: static;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .premium-paths,
+      .premium-method {
+        padding: 82px 0;
+      }
+
+      .premium-paths-head {
+        gap: 24px;
+      }
+
+      .journey-topline {
+        margin-bottom: 40px;
+      }
+
+      .premium-step {
+        grid-template-columns: 58px 1fr;
+        padding: 22px;
+      }
+
+      .step-index {
+        font-size: 42px;
+      }
+    }
+
+
+  </style>
 </head>
 
 <body>
@@ -2912,15 +3413,15 @@
     <div class="brand-mark">NL</div>
     <div class="brand-copy">
       <div class="brand-name">NOWLENS</div>
-      <div class="brand-sub">Your lens into the future of ServiceNow AI.</div>
+      <div class="brand-sub">ServiceNow Learning Studio</div>
     </div>
   </div>
 
   <nav>
-    <a onclick="scrollToId('tracks')">AI Platform</a>
-    <a onclick="scrollToId('method')">How We Teach</a>
-    <a onclick="scrollToId('catalog')">Learning Areas</a>
-    <a class="nav-cta" onclick="scrollToId('catalog')">Explore AI</a>
+    <a onclick="scrollToId('tracks')">Tracks</a>
+    <a onclick="scrollToId('method')">How It Works</a>
+    <a onclick="scrollToId('catalog')">Courses</a>
+    <a class="nav-cta" onclick="scrollToId('catalog')">Start Learning</a>
   </nav>
 </header>
 
@@ -2956,7 +3457,7 @@
 
       <div class="hero-kicker">
         <span></span>
-        Learn. Build. Apply AI with clarity.
+        Learn ServiceNow with clarity
       </div>
 
       <h1>
@@ -2966,28 +3467,28 @@
       </h1>
 
       <p>
-        <strong style="color:white;">NowLens</strong> helps you understand the ServiceNow AI landscape without the hype.
-        Learn the AI foundations, see how Otto and Now Assist fit together, understand how agents perform work,
-        and explore how enterprise AI is grounded, governed and applied to real workflows.
+        <strong style="color:white;">NowLens</strong> helps you learn ServiceNow through structured courses,
+        guided demos, visual explanations and hands-on practice.
+        Build real skills step by step and grow your confidence across ITOM, ITAM and Now Assist.
       </p>
 
       <div class="hero-actions">
-        <button class="btn-primary" onclick="scrollToId('catalog')">Explore AI Learning</button>
+        <button class="btn-primary" onclick="scrollToId('catalog')">Explore Courses</button>
         <button class="btn-ghost" onclick="scrollToId('method')">How We Teach</button>
       </div>
 
       <div class="hero-metrics">
         <div class="metric">
-          <strong>Understand</strong>
-          <span>AI foundations</span>
+          <strong>20+</strong>
+          <span>Learning Modules</span>
         </div>
         <div class="metric">
-          <strong>Build</strong>
-          <span>ServiceNow AI</span>
+          <strong>3</strong>
+          <span>Core Tracks</span>
         </div>
         <div class="metric">
-          <strong>Apply</strong>
-          <span>Real workflows</span>
+          <strong>1</strong>
+          <span>Simple Learning Path</span>
         </div>
       </div>
     </div>
@@ -3018,64 +3519,64 @@
       <div class="topic-orbit" aria-hidden="true">
 
         <div class="topic-node n1">
-          <div class="topic-code">OTTO</div>
-          <strong>ServiceNow Otto</strong>
-          <small>AI assistant</small>
+          <div class="topic-code">MID</div>
+          <strong>MID Server</strong>
+          <small>Connectivity</small>
         </div>
 
         <div class="topic-node n2">
-          <div class="topic-code">AIA</div>
-          <strong>AI Agents</strong>
-          <small>Do work</small>
+          <div class="topic-code">DSC</div>
+          <strong>Discovery</strong>
+          <small>Infra</small>
         </div>
 
         <div class="topic-node n3">
-          <div class="topic-code">ACT</div>
-          <strong>Control Tower</strong>
-          <small>Govern AI</small>
+          <div class="topic-code">NA</div>
+          <strong>Now Assist</strong>
+          <small>Enterprise AI</small>
         </div>
 
         <div class="topic-node n4">
-          <div class="topic-code">CTX</div>
-          <strong>Context Engine</strong>
-          <small>Business context</small>
+          <div class="topic-code">AIA</div>
+          <strong>AI Agents</strong>
+          <small>Agentic AI</small>
         </div>
 
         <div class="topic-node n5">
-          <div class="topic-code">NASK</div>
-          <strong>Skill Kit</strong>
-          <small>Build skills</small>
+          <div class="topic-code">SAM</div>
+          <strong>SAM</strong>
+          <small>Software</small>
         </div>
 
         <div class="topic-node n6">
-          <div class="topic-code">AIS</div>
-          <strong>AI Search</strong>
-          <small>Grounded answers</small>
+          <div class="topic-code">CDB</div>
+          <strong>CMDB</strong>
+          <small>CI data</small>
         </div>
 
         <div class="topic-node n7">
-          <div class="topic-code">MCP</div>
-          <strong>MCP + Fabric</strong>
-          <small>Connect AI</small>
+          <div class="topic-code">HAM</div>
+          <strong>HAM</strong>
+          <small>Hardware</small>
         </div>
 
         <div class="topic-node n8">
-          <div class="topic-code">LENS</div>
-          <strong>AI Lens</strong>
-          <small>Multimodal</small>
+          <div class="topic-code">EM</div>
+          <strong>Event Mgmt</strong>
+          <small>Events & alerts</small>
         </div>
 
       </div>
 
       <div class="center-card">
-        <small>NowLens AI learning flow</small>
-        <h3>Understand the AI. See the platform. Apply it to work.</h3>
+        <small>NowLens learning flow</small>
+        <h3>Turn complex topics into clear understanding.</h3>
 
         <div class="learning-line">
-          <div><b>1</b><span>Learn the AI concept</span></div>
-          <div><b>2</b><span>Map it to ServiceNow</span></div>
-          <div><b>3</b><span>Explore a real use case</span></div>
-          <div><b>4</b><span>Build & evaluate</span></div>
+          <div><b>1</b><span>Understand the concept</span></div>
+          <div><b>2</b><span>See how it works</span></div>
+          <div><b>3</b><span>Practice with a lab</span></div>
+          <div><b>4</b><span>Check your learning</span></div>
         </div>
       </div>
 
@@ -3089,40 +3590,40 @@
 
     <div class="section-head reveal">
       <div>
-        <div class="eyebrow">Why NowLens AI</div>
-        <h2>Understand the platform, not just the product names.</h2>
+        <div class="eyebrow">Why NowLens</div>
+        <h2>More than reading documentation.</h2>
       </div>
 
       <p>
-        ServiceNow AI spans assistants, search, skills, agents, enterprise context, model services and governance.
-        NowLens connects those pieces into a learning path that starts simple and gets deeper only when you need it.
+        The goal is simple: help people actually understand ServiceNow.
+        We organize complicated topics into practical learning journeys that are easier to follow and easier to remember.
       </p>
     </div>
 
     <div class="benefit-grid">
 
       <div class="benefit-card reveal">
+        <div class="benefit-icon">📚</div>
+        <h3>Structured Learning</h3>
+        <p>Clear learning paths that tell you what to learn first, what comes next and how the concepts connect.</p>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🎥</div>
+        <h3>Visual Explanations</h3>
+        <p>Architecture, flows and concepts presented in a way that is easier to understand than dense documentation.</p>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🧪</div>
+        <h3>Hands-on Practice</h3>
+        <p>Guided labs and configuration exercises help turn theory into practical knowledge.</p>
+      </div>
+
+      <div class="benefit-card reveal">
         <div class="benefit-icon">🧠</div>
-        <h3>Understand AI</h3>
-        <p>Learn LLMs, prompting, grounding, RAG, agents, evaluation and responsible AI in clear enterprise language.</p>
-      </div>
-
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">✦</div>
-        <h3>Experience AI</h3>
-        <p>Understand Otto, Now Assist, AI Search, Virtual Agent, AI Lens and how people interact with ServiceNow AI.</p>
-      </div>
-
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">⚙️</div>
-        <h3>Build AI</h3>
-        <p>Explore Skill Kit, Data Kit, GAIC, Knowledge Graph, Context Engine, MCP and AI Agent Studio.</p>
-      </div>
-
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">◎</div>
-        <h3>Govern & Apply</h3>
-        <p>Learn AI Control Tower, evaluation, security and how AI accelerates real enterprise workflows.</p>
+        <h3>Knowledge Checks</h3>
+        <p>Short quizzes and exercises reinforce the important concepts and help learners build confidence.</p>
       </div>
 
     </div>
@@ -3134,107 +3635,107 @@
 
     <div class="section-head reveal">
       <div>
-        <div class="eyebrow" style="color:#9f8dff">ServiceNow AI — Explained Simply</div>
-        <h2 style="color:white">Start with what each AI layer actually does.</h2>
+        <div class="eyebrow" style="color:#9f8dff">Learning Tracks</div>
+        <h2 style="color:white">Choose where you want to grow.</h2>
       </div>
       <p style="color:#aeb7cf">
-        Otto is the front door. Agents perform work. Context helps AI understand the enterprise.
-        Control Tower governs the AI landscape.
+        Learn one domain deeply or move across all three. Each track builds from foundations to more advanced topics.
       </p>
     </div>
 
     <div class="track-tabs reveal">
-      <button class="track-tab active" onclick="showTrack('itomTrack', this)">Otto — Talk to AI</button>
-      <button class="track-tab" onclick="showTrack('itamTrack', this)">Agents — AI Does Work</button>
-      <button class="track-tab" onclick="showTrack('aiTrack', this)">Control — Govern AI</button>
+      <button class="track-tab active" onclick="showTrack('itomTrack', this)">ITOM</button>
+      <button class="track-tab" onclick="showTrack('itamTrack', this)">ITAM</button>
+      <button class="track-tab" onclick="showTrack('aiTrack', this)">Now Assist</button>
     </div>
 
     <div id="itomTrack" class="track-panel active">
       <div class="track-main">
-        <h3>ServiceNow Otto</h3>
+        <h3>ITOM</h3>
         <p>
-          Think of Otto as the ChatGPT- or Claude-like front door to enterprise work —
-          a conversational AI experience connected to ServiceNow context, permissions,
-          workflows, agents and systems.
+          Learn how ServiceNow discovers infrastructure, builds operational data,
+          understands relationships and monitors services.
         </p>
 
         <div class="track-tags">
-          <span>Conversation</span>
-          <span>Voice</span>
-          <span>Search</span>
-          <span>Multimodal</span>
-          <span>Enterprise context</span>
-          <span>Cross-system work</span>
+          <span>MID Server</span>
+          <span>Discovery</span>
+          <span>Cloud Discovery</span>
+          <span>CMDB</span>
+          <span>ACC</span>
+          <span>Event Management</span>
+          <span>Service Mapping</span>
         </div>
       </div>
 
       <div class="path-card">
-        <h4>How to understand Otto</h4>
+        <h4>Suggested learning path</h4>
         <div class="path-steps">
-          <div class="path-step"><b>01</b><div><strong>Ask</strong><span>User expresses intent naturally</span></div></div>
-          <div class="path-step"><b>02</b><div><strong>Understand</strong><span>AI uses context, identity and permissions</span></div></div>
-          <div class="path-step"><b>03</b><div><strong>Route</strong><span>Search, agents and workflows are selected</span></div></div>
-          <div class="path-step"><b>04</b><div><strong>Complete</strong><span>Work moves toward an outcome</span></div></div>
+          <div class="path-step"><b>01</b><div><strong>MID Server</strong><span>Connectivity foundation</span></div></div>
+          <div class="path-step"><b>02</b><div><strong>Discovery</strong><span>Find and identify infrastructure</span></div></div>
+          <div class="path-step"><b>03</b><div><strong>CMDB</strong><span>Understand CI data and relationships</span></div></div>
+          <div class="path-step"><b>04</b><div><strong>Operations</strong><span>ACC, Event Mgmt & Service Mapping</span></div></div>
         </div>
       </div>
     </div>
 
     <div id="itamTrack" class="track-panel">
       <div class="track-main">
-        <h3>AI Agents & Autonomous Work</h3>
+        <h3>ITAM</h3>
         <p>
-          AI agents move beyond generating answers. They use instructions, tools,
-          records and enterprise context to pursue goals and complete workflow tasks.
+          Learn how ServiceNow manages hardware and software throughout the asset lifecycle,
+          from inventory through compliance and retirement.
         </p>
 
         <div class="track-tags">
-          <span>AI Agent Studio</span>
-          <span>Agent tools</span>
-          <span>Agentic workflows</span>
-          <span>Orchestrator</span>
-          <span>Agent Advisor</span>
-          <span>Evaluations</span>
-          <span>Autonomous Workforce</span>
+          <span>HAM</span>
+          <span>SAM</span>
+          <span>Asset Lifecycle</span>
+          <span>Normalization</span>
+          <span>Entitlements</span>
+          <span>Reconciliation</span>
         </div>
       </div>
 
       <div class="path-card">
-        <h4>How agentic AI grows</h4>
+        <h4>Suggested learning path</h4>
         <div class="path-steps">
-          <div class="path-step"><b>01</b><div><strong>Assistant</strong><span>AI responds and recommends</span></div></div>
-          <div class="path-step"><b>02</b><div><strong>Agent</strong><span>AI uses tools to perform work</span></div></div>
-          <div class="path-step"><b>03</b><div><strong>Agentic workflow</strong><span>Agents collaborate toward a goal</span></div></div>
-          <div class="path-step"><b>04</b><div><strong>Autonomous Workforce</strong><span>AI specialists handle broader jobs</span></div></div>
+          <div class="path-step"><b>01</b><div><strong>Asset Foundations</strong><span>Models, categories and lifecycle</span></div></div>
+          <div class="path-step"><b>02</b><div><strong>HAM</strong><span>Hardware inventory and movement</span></div></div>
+          <div class="path-step"><b>03</b><div><strong>SAM</strong><span>Software installations and models</span></div></div>
+          <div class="path-step"><b>04</b><div><strong>Compliance</strong><span>Entitlements and reconciliation</span></div></div>
         </div>
       </div>
     </div>
 
     <div id="aiTrack" class="track-panel">
       <div class="track-main">
-        <h3>Context Engine + AI Control Tower</h3>
+        <h3>Now Assist</h3>
         <p>
-          Context Engine helps AI understand enterprise relationships, policies and workflow state.
-          AI Control Tower provides the governance layer for AI assets, risk, lifecycle, compliance and value.
+          Learn the ServiceNow generative AI ecosystem from foundational concepts
+          through AI Search, skills, agents, Virtual Agent and ITSM experiences.
         </p>
 
         <div class="track-tags">
-          <span>Context Engine</span>
-          <span>Knowledge Graph</span>
-          <span>RAG</span>
-          <span>AI Control Tower</span>
-          <span>AI Discovery</span>
-          <span>Risk & Compliance</span>
-          <span>AI Value</span>
+          <span>AI Essentials</span>
+          <span>NAA</span>
+          <span>AI Search</span>
+          <span>NASK</span>
+          <span>NADK</span>
+          <span>GAIC</span>
+          <span>NAVA</span>
+          <span>AI Agents</span>
+          <span>NA ITSM</span>
         </div>
       </div>
 
       <div class="path-card">
-        <h4>Two questions to remember</h4>
+        <h4>Suggested learning path</h4>
         <div class="path-steps">
-          <div class="path-step"><b>01</b><div><strong>What should AI know?</strong><span>Business context, data and relationships</span></div></div>
-          <div class="path-step"><b>02</b><div><strong>What can AI access?</strong><span>Identity, permissions and governed tools</span></div></div>
-          <div class="path-step"><b>03</b><div><strong>How is AI controlled?</strong><span>Inventory, risk, lifecycle and compliance</span></div></div>
-          <div class="path-step"><b>04</b><div><strong>Is AI creating value?</strong><span>Adoption, productivity and business outcomes</span></div></div>
+          <div class="path-step"><b>01</b><div><strong>AI Essentials</strong><span>Build the AI foundation</span></div></div>
+          <div class="path-step"><b>02</b><div><strong>Common Services</strong><span>NAA, AIS, NASK, NADK & GAIC</span></div></div>
+          <div class="path-step"><b>03</b><div><strong>Experiences</strong><span>NAVA and Now Assist Panel</span></div></div>
+          <div class="path-step"><b>04</b><div><strong>Advanced AI</strong><span>AI Agents and Now Assist for ITSM</span></div></div>
         </div>
       </div>
     </div>
@@ -3243,85 +3744,87 @@
 </section>
 
 
-<section class="featured-paths">
+
+<section class="featured-paths premium-paths">
   <div class="container">
 
-    <div class="featured-header reveal">
+    <div class="premium-paths-head reveal">
       <div>
-        <div class="mini-eyebrow">NowLens Learning Areas</div>
-        <h2>Five clear ways to learn ServiceNow AI.</h2>
+        <div class="premium-kicker">CURATED LEARNING JOURNEYS</div>
+        <h2>Start with direction.<br><em>Grow with depth.</em></h2>
       </div>
 
       <p>
-        The homepage stays simple. Detailed products and features live inside the learning area
-        where they make the most sense.
+        No random hopping between topics. Each NowLens path is designed to build the
+        right foundation first, then move into deeper ServiceNow concepts with purpose.
       </p>
     </div>
 
-    <div class="featured-grid">
+    <div class="journey-grid">
 
-      <article class="featured-card reveal">
-        <div class="featured-track">01 · UNDERSTAND AI</div>
-        <h3>Learn the foundations.</h3>
-        <p>Understand the technology before learning the ServiceNow implementation.</p>
-        <div class="featured-sequence">
-          <div class="featured-step"><i></i>Generative AI & LLMs</div>
-          <div class="featured-step"><i></i>Prompting</div>
-          <div class="featured-step"><i></i>Grounding & RAG</div>
-          <div class="featured-step"><i></i>Evaluation & guardrails</div>
-          <div class="featured-step"><i></i>Responsible AI</div>
+      <article class="journey-card journey-itom reveal">
+        <div class="journey-topline">
+          <span class="journey-number">01</span>
+          <span class="journey-label">ITOM</span>
+        </div>
+
+        <h3>Build your operational foundation.</h3>
+
+        <p>
+          Understand how infrastructure is connected, discovered, identified and
+          transformed into operational visibility.
+        </p>
+
+        <div class="journey-flow">
+          <div><span>01</span><b>MID Server</b><small>Connectivity layer</small></div>
+          <div><span>02</span><b>Discovery</b><small>Infrastructure visibility</small></div>
+          <div><span>03</span><b>CMDB</b><small>Operational data model</small></div>
+          <div><span>04</span><b>Event Management</b><small>Operational intelligence</small></div>
+          <div><span>05</span><b>Service Mapping</b><small>Service context</small></div>
         </div>
       </article>
 
-      <article class="featured-card itam-path reveal">
-        <div class="featured-track">02 · EXPERIENCE AI</div>
-        <h3>See how people use AI.</h3>
-        <p>Understand the assistant, search and multimodal experiences users interact with.</p>
-        <div class="featured-sequence">
-          <div class="featured-step"><i></i>ServiceNow Otto</div>
-          <div class="featured-step"><i></i>Now Assist</div>
-          <div class="featured-step"><i></i>AI Search</div>
-          <div class="featured-step"><i></i>Virtual Agent & Panel</div>
-          <div class="featured-step"><i></i>AI Lens</div>
+      <article class="journey-card journey-itam reveal">
+        <div class="journey-topline">
+          <span class="journey-number">02</span>
+          <span class="journey-label">ITAM</span>
+        </div>
+
+        <h3>Understand the complete asset story.</h3>
+
+        <p>
+          Follow the lifecycle from asset foundations through hardware, software,
+          entitlements and reconciliation.
+        </p>
+
+        <div class="journey-flow">
+          <div><span>01</span><b>Asset Foundations</b><small>Data & lifecycle</small></div>
+          <div><span>02</span><b>Hardware Asset Management</b><small>Physical assets</small></div>
+          <div><span>03</span><b>Software Asset Management</b><small>Software estate</small></div>
+          <div><span>04</span><b>Entitlements</b><small>License rights</small></div>
+          <div><span>05</span><b>Reconciliation</b><small>Compliance position</small></div>
         </div>
       </article>
 
-      <article class="featured-card ai-path reveal">
-        <div class="featured-track">03 · BUILD & CONNECT</div>
-        <h3>Build grounded AI experiences.</h3>
-        <p>Learn the tools and services behind custom AI capabilities.</p>
-        <div class="featured-sequence">
-          <div class="featured-step"><i></i>Skill Kit & Data Kit</div>
-          <div class="featured-step"><i></i>Generative AI Controller</div>
-          <div class="featured-step"><i></i>Knowledge Graph</div>
-          <div class="featured-step"><i></i>Context Engine</div>
-          <div class="featured-step"><i></i>MCP & AI connectivity</div>
+      <article class="journey-card journey-ai reveal">
+        <div class="journey-topline">
+          <span class="journey-number">03</span>
+          <span class="journey-label">NOW ASSIST</span>
         </div>
-      </article>
 
-      <article class="featured-card reveal">
-        <div class="featured-track">04 · AGENTIC AI</div>
-        <h3>Move from answers to action.</h3>
-        <p>Understand how agents, tools and workflows work together to complete goals.</p>
-        <div class="featured-sequence">
-          <div class="featured-step"><i></i>AI Agent Studio</div>
-          <div class="featured-step"><i></i>Agent tools & workflows</div>
-          <div class="featured-step"><i></i>AI Agent Orchestrator</div>
-          <div class="featured-step"><i></i>Agent Advisor & evaluations</div>
-          <div class="featured-step"><i></i>Autonomous Workforce</div>
-        </div>
-      </article>
+        <h3>Move from AI fundamentals to real capability.</h3>
 
-      <article class="featured-card ai-path reveal">
-        <div class="featured-track">05 · GOVERN & APPLY</div>
-        <h3>Control AI and connect it to value.</h3>
-        <p>Learn governance first, then see how AI accelerates real enterprise workflows.</p>
-        <div class="featured-sequence">
-          <div class="featured-step"><i></i>AI Control Tower</div>
-          <div class="featured-step"><i></i>Risk, compliance & security</div>
-          <div class="featured-step"><i></i>Readiness & analytics</div>
-          <div class="featured-step"><i></i>ITSM, ITOM, CSM & HR use cases</div>
-          <div class="featured-step"><i></i>Creator & enterprise use cases</div>
+        <p>
+          Build a clear understanding of the Now Assist ecosystem before exploring
+          skills, agents and AI-assisted ITSM experiences.
+        </p>
+
+        <div class="journey-flow">
+          <div><span>01</span><b>AI Essentials</b><small>Core concepts</small></div>
+          <div><span>02</span><b>Admin & AI Search</b><small>Common services</small></div>
+          <div><span>03</span><b>NASK, NADK & GAIC</b><small>AI building blocks</small></div>
+          <div><span>04</span><b>NAVA & Panel</b><small>AI experiences</small></div>
+          <div><span>05</span><b>AI Agents & ITSM</b><small>Advanced capability</small></div>
         </div>
       </article>
 
@@ -3329,43 +3832,70 @@
   </div>
 </section>
 
-<section id="method" class="light section">
-  <div class="container method-grid">
 
-    <div class="method-copy reveal">
-      <div class="eyebrow">How We Teach AI</div>
-      <h2>Concept first. Platform second. Use case third.</h2>
-      <p>
-        Every topic starts with the AI idea, maps it to the ServiceNow capability,
-        connects it to a real workflow and then moves into building, evaluation or governance.
-        The goal is understanding — not memorizing product names.
-      </p>
-    </div>
+<section id="method" class="premium-method">
+  <div class="container">
 
-    <div class="method-flow">
+    <div class="premium-method-grid">
 
-      <div class="method-card reveal">
-        <div class="method-number">01</div>
-        <h4>Learn the concept</h4>
-        <p>Understand the AI concept, terminology, architecture and why it matters.</p>
+      <div class="premium-method-copy reveal">
+        <div class="premium-kicker">THE NOWLENS METHOD</div>
+
+        <h2>
+          Clarity first.<br>
+          <em>Complexity later.</em>
+        </h2>
+
+        <p>
+          We do not begin with dense documentation. We build understanding in layers —
+          concept, visual context, guided practice and reinforcement — so learners know
+          not only what a feature does, but why it works that way.
+        </p>
+
+        <div class="method-quote">
+          “The goal is not to memorize ServiceNow.<br>
+          The goal is to understand it.”
+        </div>
       </div>
 
-      <div class="method-card reveal">
-        <div class="method-number">02</div>
-        <h4>Map it to ServiceNow</h4>
-        <p>See where the concept sits across Otto, Now Assist, agents, context and governance.</p>
-      </div>
+      <div class="premium-method-steps">
 
-      <div class="method-card reveal">
-        <div class="method-number">03</div>
-        <h4>Apply it to work</h4>
-        <p>Connect the capability to incidents, search, operations, customer or employee workflows.</p>
-      </div>
+        <article class="premium-step reveal">
+          <div class="step-index">01</div>
+          <div class="step-content">
+            <span class="step-kicker">FOUNDATION</span>
+            <h3>Understand</h3>
+            <p>Learn the terminology, architecture, purpose and data flow in plain language.</p>
+          </div>
+        </article>
 
-      <div class="method-card reveal">
-        <div class="method-number">04</div>
-        <h4>Build & evaluate</h4>
-        <p>Use labs, design choices and evaluation checks to turn the concept into practical skill.</p>
+        <article class="premium-step reveal">
+          <div class="step-index">02</div>
+          <div class="step-content">
+            <span class="step-kicker">VISUAL CONTEXT</span>
+            <h3>See it</h3>
+            <p>Use diagrams, walkthroughs and examples to see how the platform behaves.</p>
+          </div>
+        </article>
+
+        <article class="premium-step reveal">
+          <div class="step-index">03</div>
+          <div class="step-content">
+            <span class="step-kicker">PRACTICE</span>
+            <h3>Build it</h3>
+            <p>Follow guided configuration and hands-on exercises to make the knowledge practical.</p>
+          </div>
+        </article>
+
+        <article class="premium-step reveal">
+          <div class="step-index">04</div>
+          <div class="step-content">
+            <span class="step-kicker">REINFORCEMENT</span>
+            <h3>Apply it</h3>
+            <p>Use short exercises and knowledge checks to confirm the concepts really make sense.</p>
+          </div>
+        </article>
+
       </div>
 
     </div>
@@ -3378,28 +3908,26 @@
 
     <div class="section-head reveal">
       <div>
-        <div class="eyebrow">Learning Areas</div>
-        <h2>Go deeper when you are ready.</h2>
+        <div class="eyebrow">Course Catalog</div>
+        <h2>Start learning.</h2>
       </div>
 
       <p>
-        Choose a learning area to see the ServiceNow AI concepts and products that sit underneath it.
-        Individual lessons can then grow without making the homepage feel crowded.
+        Explore the core modules below. Each one can grow into detailed lessons,
+        diagrams, demos, guided labs and quizzes.
       </p>
     </div>
 
     <div class="catalog-toolbar reveal">
       <div class="search">
-        <input id="searchInput" type="text" placeholder="Search Otto, AI Agents, Control Tower, RAG, MCP..." oninput="renderCourses()">
+        <input id="searchInput" type="text" placeholder="Search MID Server, Discovery, SAM, AI Agents..." oninput="renderCourses()">
       </div>
 
       <div class="filters">
         <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
-        <button class="filter-btn" onclick="setFilter('foundation',this)">Understand</button>
-        <button class="filter-btn" onclick="setFilter('experience',this)">Experience</button>
-        <button class="filter-btn" onclick="setFilter('build',this)">Build</button>
-        <button class="filter-btn" onclick="setFilter('agentic',this)">Agentic</button>
-        <button class="filter-btn" onclick="setFilter('govern',this)">Govern & Apply</button>
+        <button class="filter-btn" onclick="setFilter('itom',this)">ITOM</button>
+        <button class="filter-btn" onclick="setFilter('itam',this)">ITAM</button>
+        <button class="filter-btn" onclick="setFilter('ai',this)">Now Assist</button>
       </div>
     </div>
 
@@ -3413,8 +3941,8 @@
     <div class="progress-card reveal">
 
       <div>
-        <h3>Your ServiceNow AI journey</h3>
-        <p>Mark learning areas complete as you move from foundations into agentic AI, governance and real use cases.</p>
+        <h3>Your NowLens journey</h3>
+        <p>Mark modules complete as you move through the learning path.</p>
 
         <div class="progress-bar">
           <div id="progressBar"></div>
@@ -3452,113 +3980,35 @@
 </aside>
 
 <footer>
-  <strong>NowLens</strong> — independent ServiceNow AI learning for people who want to understand the platform, build responsibly and apply AI to real enterprise work.
+  <strong>NowLens</strong> — independent ServiceNow learning for people who want to understand the platform better.
   Not affiliated with or endorsed by ServiceNow.
 </footer>
 
 <script>
 const courses = [
-  {
-    "id": 1,
-    "track": "foundation",
-    "label": "Understand AI",
-    "icon": "🧠",
-    "title": "AI Foundations",
-    "duration": "Learning Area",
-    "description": "Build the concepts needed before learning ServiceNow-specific AI features.",
-    "topics": [
-      "Generative AI and LLMs",
-      "Prompting",
-      "Grounding and RAG",
-      "Hallucinations and citations",
-      "Evaluation and guardrails",
-      "Responsible AI",
-      "Predictive Intelligence, Task Intelligence, NLU and NLQ"
-    ]
-  },
-  {
-    "id": 2,
-    "track": "experience",
-    "label": "Experience AI",
-    "icon": "✦",
-    "title": "ServiceNow AI Experience",
-    "duration": "Learning Area",
-    "description": "Understand how users interact with ServiceNow AI and where Otto fits.",
-    "topics": [
-      "ServiceNow Otto",
-      "Otto vs Now Assist / AI Experience",
-      "Now Assist",
-      "AI Search",
-      "Now Assist Panel",
-      "Virtual Agent",
-      "AI Lens",
-      "Document Intelligence"
-    ]
-  },
-  {
-    "id": 3,
-    "track": "build",
-    "label": "Build & Connect",
-    "icon": "⚙️",
-    "title": "Build & Connect ServiceNow AI",
-    "duration": "Learning Area",
-    "description": "Learn the tools and services used to create grounded, connected AI experiences.",
-    "topics": [
-      "Now Assist Skill Kit",
-      "Now Assist Data Kit",
-      "Generative AI Controller",
-      "Model providers",
-      "Knowledge Graph",
-      "Context Engine",
-      "Workflow Data Fabric",
-      "MCP",
-      "AI Agent Fabric / A2A",
-      "Action Fabric",
-      "Now Assist for Creator"
-    ]
-  },
-  {
-    "id": 4,
-    "track": "agentic",
-    "label": "Agentic AI",
-    "icon": "🤖",
-    "title": "AI Agents & Autonomous Work",
-    "duration": "Learning Area",
-    "description": "Learn how ServiceNow moves from AI answers into goal-oriented work.",
-    "topics": [
-      "AI Agent Studio",
-      "AI agents and tools",
-      "Agentic workflows",
-      "AI Agent Orchestrator",
-      "Multi-agent collaboration",
-      "AI Agent Advisor",
-      "Agent traces and evaluations",
-      "Autonomous Workforce"
-    ]
-  },
-  {
-    "id": 5,
-    "track": "govern",
-    "label": "Govern & Apply",
-    "icon": "◎",
-    "title": "AI Governance & Enterprise Use Cases",
-    "duration": "Learning Area",
-    "description": "Learn how AI is governed and how it creates measurable workflow value.",
-    "topics": [
-      "AI Control Tower",
-      "AI discovery and asset inventory",
-      "AI lifecycle",
-      "Risk, compliance, privacy and security",
-      "Readiness and analytics",
-      "Incident triage",
-      "Change assistance",
-      "IT operations",
-      "CSM and HR use cases",
-      "Security and Creator use cases",
-      "Enterprise / ITAM scenarios"
-    ]
-  }
-]
+  {id:1,track:'itom',label:'ITOM',icon:'🛰️',title:'MID Server',duration:'4 Days',description:'Build a strong MID Server foundation from installation through configuration and troubleshooting.',topics:['MID Server architecture','Windows MSI installation','Linux installation','Multiple MID Servers','Pre-upgrade checks','Manual upgrades','Upgrade history','MID Server logs','Configuration','Domain separation','MID selection','Default MID by application','Selection filters','Nmap','Clusters','Distributed clusters','IP range auto-assignment','Capabilities','Selection algorithm','PowerShell parameters','Security and encryption','Active issues','Connectivity issues','MID fails to start','User debugging output','Resource threshold alerts','Mutual Authentication','SSL certificate import']},
+  {id:2,track:'itom',label:'ITOM',icon:'🔎',title:'Discovery',duration:'2 Days',description:'Learn how Discovery identifies infrastructure, executes patterns and creates CI data.',topics:['Discovery architecture','Credentials','Schedules','Shazzam','Classification','Identification','Horizontal patterns','Pattern execution','Discovery Status','ECC Queue','IRE fundamentals','Windows Discovery','Linux Discovery','Network Discovery','Database Discovery']},
+  {id:3,track:'itom',label:'ITOM',icon:'☁️',title:'Cloud Discovery',duration:'1 Day',description:'Understand cloud account discovery, credentials, resource collection and relationships.',topics:['Cloud Discovery architecture','Cloud credentials','AWS discovery','Azure discovery','Schedules','Resource collection','Cloud relationships','Missing resource troubleshooting']},
+  {id:4,track:'itom',label:'ITOM',icon:'🗂️',title:'CMDB & CI Foundations',duration:'2 Days',description:'Understand CI classes, identification, reconciliation, relationships and data quality.',topics:['CMDB class hierarchy','CI identification','IRE','Reconciliation','Discovery source precedence','CI relationships','CMDB Health','Model categories','Asset-CI synchronization','Lifecycle states']},
+  {id:5,track:'itom',label:'ITOM',icon:'📡',title:'Agent Client Collector',duration:'1 Day',description:'Learn ACC architecture, agent deployment, upgrades, collected data and troubleshooting.',topics:['ACC architecture','Agent install','Agent registration','ACC Visibility','Collected data','CI identification','Agent upgrades','ACC logs','Troubleshooting']},
+  {id:6,track:'itom',label:'ITOM',icon:'🚨',title:'Event Management',duration:'2 Days',description:'Understand events, alerts, correlation, binding and operational workflows.',topics:['Event ingestion','Event rules','Alert creation','CI binding','Correlation','Grouping','Incident creation','Connectors','Retention']},
+  {id:7,track:'itom',label:'ITOM',icon:'🕸️',title:'Service Mapping',duration:'2 Days',description:'Learn how application services are discovered, mapped and visualized.',topics:['Service Mapping architecture','Entry points','Pattern-based mapping','Traffic-based concepts','Application services','Relationships','Dependency views','Troubleshooting']},
+
+  {id:8,track:'itam',label:'ITAM',icon:'💻',title:'Hardware Asset Management',duration:'2 Days',description:'Learn the hardware lifecycle from inventory through transfer, retirement and disposal.',topics:['HAM data model','Asset lifecycle','Models','Model categories','Stockrooms','Inventory','Transfer orders','Asset movement','Asset-CI sync','Retirement','Disposal']},
+  {id:9,track:'itam',label:'ITAM',icon:'📦',title:'Software Asset Management',duration:'3 Days',description:'Learn software discovery, normalization, models, entitlements and reconciliation.',topics:['Software installations','Discovery sources','Normalization','Software models','Discovery maps','Entitlements','License metrics','Reconciliation','Compliance','Unlicensed installs','SaaS subscriptions']},
+  {id:10,track:'itam',label:'ITAM',icon:'🔁',title:'Asset Lifecycle & Governance',duration:'1 Day',description:'Connect CMDB and ITAM through lifecycle, governance and data-quality concepts.',topics:['Asset-CI lifecycle alignment','Duplicate prevention','Lifecycle mappings','Retirement','Decommissioning','Retention','Governance','Reporting']},
+
+  {id:11,track:'ai',label:'Now Assist',icon:'🧠',title:'AI Essentials',duration:'85 min',description:'Build the AI foundation needed before exploring the Now Assist ecosystem.',topics:['AI essentials','Generative AI','LLM concepts','Enterprise AI use cases','Responsible AI']},
+  {id:12,track:'ai',label:'Now Assist',icon:'⚙️',title:'Now Assist Admin',duration:'~4 hrs',description:'Learn administration, setup, configuration and the Now Assist Admin experience.',topics:['Admin Console','NAA introduction','Configuration','NAA troubleshooting concepts','NADK and NAA relationship','Hands-on lab concepts']},
+  {id:13,track:'ai',label:'Now Assist',icon:'🔍',title:'AI Search',duration:'~11 hrs',description:'Learn indexing, retrieval, search UX and how AI Search fits into the platform.',topics:['AI Search basics','Indexed sources','Search overview','Retrieval','AI Search UX','Search troubleshooting concepts','Hands-on lab']},
+  {id:14,track:'ai',label:'Now Assist',icon:'🧩',title:'Now Assist Skill Kit',duration:'~2 hrs',description:'Understand custom skill creation, execution and the Skill Kit toolset.',topics:['Custom skill creation','Skill Kit tools','Skill execution','Skill design','Troubleshooting concepts']},
+  {id:15,track:'ai',label:'Now Assist',icon:'🗃️',title:'Now Assist Data Kit',duration:'~2 hrs',description:'Learn the data collection and evaluation concepts behind AI experiences.',topics:['Data Kit basics','Data collection','Data evaluation','Agent evaluation','Data Kit concepts']},
+  {id:16,track:'ai',label:'Now Assist',icon:'🎛️',title:'Generative AI Controller',duration:'~5 hrs',description:'Understand GAIC architecture, providers, models and how AI requests are managed.',topics:['GAIC overview','Provider integration','Model integration','Controller deep dive','Troubleshooting concepts']},
+  {id:17,track:'ai',label:'Now Assist',icon:'💬',title:'Now Assist in Virtual Agent',duration:'~17 hrs',description:'Learn NAVA architecture, guided setup, skills, performance and AI conversations.',topics:['Virtual Agent basics','NAVA basics','Guided setup','Enhanced Chat','Execution flow','Performance','Skill discovery','Agentic NAVA','AI Conversation Debugger','Hands-on lab']},
+  {id:18,track:'ai',label:'Now Assist',icon:'🪟',title:'Now Assist Panel',duration:'~1.5 hrs',description:'Learn the Now Assist Panel experience, configuration and usage.',topics:['Panel fundamentals','Panel configuration','Hands-on lab','Usage concepts']},
+  {id:19,track:'ai',label:'Now Assist',icon:'🤖',title:'AI Agents',duration:'~9 hrs',description:'Learn agent architecture, tools, execution, evaluation and agentic workflows.',topics:['AI Agents overview','Agent architecture','Agent tools','Execution','Evaluation','AI Agent concepts','Hands-on lab']},
+  {id:20,track:'ai',label:'Now Assist',icon:'🎫',title:'Now Assist for ITSM',duration:'~5.7 hrs',description:'Apply Now Assist to incident and ITSM workflows, summaries and resolution generation.',topics:['ITSM Essentials','Incident summarization','Attachment summarization','Resolution notes','ITSM skills','Agent collection','Conversational skills']}
+];
 
 let activeFilter = 'all';
 
@@ -3648,14 +4098,15 @@ function openCourse(id) {
       <span>Knowledge Check</span>
     </div>
 
-    <h3>What sits inside this learning area</h3>
+    <h3>Learning topics</h3>
 
     <div class="topic-list">
       ${c.topics.map(t => `<div class="topic">${t}</div>`).join('')}
     </div>
 
     <div class="drawer-note">
-      Each item can become its own lesson with concept explanation, architecture, ServiceNow mapping, use case, lab or design challenge, governance notes and a knowledge check.
+      Each module can be expanded with diagrams, examples, step-by-step labs and short quizzes
+      so learners understand both the concept and how it works in ServiceNow.
     </div>
 
     <button class="complete-btn" onclick="completeCourse(${c.id})">
@@ -3673,7 +4124,7 @@ function closeCourse() {
 }
 
 function completedIds() {
-  return JSON.parse(localStorage.getItem('nowlensAiCompleted') || '[]');
+  return JSON.parse(localStorage.getItem('nowlensDynamicCompleted') || '[]');
 }
 
 function isCompleted(id) {
@@ -3684,7 +4135,7 @@ function completeCourse(id) {
   const done = completedIds();
   if (!done.includes(id)) done.push(id);
 
-  localStorage.setItem('nowlensAiCompleted', JSON.stringify(done));
+  localStorage.setItem('nowlensDynamicCompleted', JSON.stringify(done));
 
   updateProgress();
   renderCourses();
