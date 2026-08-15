@@ -26,3 +26,19 @@ body .container{background:linear-gradient(180deg,rgba(255,255,255,.02),transpar
 .container h2{font-size:18px;color:#dfe7ff;margin-top:12px}
 .container p, .container li{color:#c9d3ee}
 .container a{color:#7c5cff}
+
+/* Dark site header + background to approximate index theme */
+body{background:
+  radial-gradient(circle at 12% 15%, rgba(124,92,255,.22), transparent 26%),
+  radial-gradient(circle at 88% 18%, rgba(40,215,211,.16), transparent 24%),
+  radial-gradient(circle at 70% 70%, rgba(255,109,168,.10), transparent 26%),
+  var(--bg);
+}
+
+header{
+  position:sticky;top:12px;background:rgba(11,16,32,.72);backdrop-filter:blur(12px);border-radius:14px;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;
+}
+
+.brand-mark{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(145deg,var(--violet),var(--pink));font-weight:900}
+
+.nav-cta{padding:8px 12px;border-radius:10px;background:linear-gradient(135deg,#8f6dff,#6f5df7);color:white}
