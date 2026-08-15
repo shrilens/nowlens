@@ -1,0 +1,28 @@
+/* Minimal shared styles for NowLens pages */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+:root{
+  --bg: #0b1020;
+  --paper: #f7f8fc;
+  --white: #fff;
+  --muted: #aeb7cf;
+}
+
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Arial,sans-serif;margin:0;background:var(--bg);color:var(--white);-webkit-font-smoothing:antialiased}
+header{padding:18px 6%;display:flex;align-items:center;gap:18px}
+nav{display:flex;gap:14px}
+nav a{color:var(--muted);text-decoration:none;font-weight:700}
+nav a.active{color:var(--white)}
+.container{width:min(1180px,90%);margin:32px auto;padding:12px}
+main h1{font-size:32px;margin-bottom:8px}
+a{color:#7c5cff}
+
+/* Light layout for content pages */
+body .container{background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);border-radius:12px;padding:28px}
+
+/* Topic page tweaks */
+.container h1{font-size:28px;margin-bottom:6px;color:#fff}
+.container h2{font-size:18px;color:#dfe7ff;margin-top:12px}
+.container p, .container li{color:#c9d3ee}
+.container a{color:#7c5cff}
