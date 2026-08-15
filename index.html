@@ -2902,27 +2902,6 @@
         linear-gradient(145deg, #33405f, #596784);
     }
 
-
-    /* ===== NOWLENS CONTENT HUB ===== */
-    .content-hub{
-      background:
-        radial-gradient(circle at 10% 10%,rgba(124,92,255,.08),transparent 26%),
-        radial-gradient(circle at 92% 90%,rgba(40,215,211,.06),transparent 28%),
-        linear-gradient(180deg,#fafbfe,#f2f4f9);
-    }
-    .content-hub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .content-hub-card{
-      min-height:260px;padding:28px;border-radius:24px;background:#fff;color:#171d31;
-      border:1px solid rgba(33,42,73,.08);box-shadow:0 18px 44px rgba(28,35,65,.07);
-      transition:.25s ease;position:relative;overflow:hidden
-    }
-    .content-hub-card:hover{transform:translateY(-7px);box-shadow:0 28px 60px rgba(28,35,65,.12)}
-    .content-hub-code{color:#6c60e8;font-size:9px;font-weight:900;letter-spacing:.16em}
-    .content-hub-card h3{margin-top:45px;font-size:25px;letter-spacing:-1px}
-    .content-hub-card p{margin-top:10px;color:#73798b;font-size:12px;line-height:1.72}
-    .content-hub-card span{display:inline-block;margin-top:24px;color:#6355d8;font-size:11px;font-weight:900}
-    @media(max-width:800px){.content-hub-grid{grid-template-columns:1fr}}
-
 </style>
 </head>
 
@@ -2939,10 +2918,8 @@
 
   <nav>
     <a onclick="scrollToId('tracks')">AI Platform</a>
-    <a onclick="scrollToId('catalog')">Learning</a>
-    <a href="blogs.html">Blogs</a>
-    <a href="demos.html">Demos</a>
-    <a href="docs.html">Docs</a>
+    <a onclick="scrollToId('method')">How We Teach</a>
+    <a onclick="scrollToId('catalog')">Learning Areas</a>
     <a class="nav-cta" onclick="scrollToId('catalog')">Explore AI</a>
   </nav>
 </header>
@@ -3428,45 +3405,6 @@
 
     <div id="courseGrid" class="course-grid"></div>
 
-  </div>
-</section>
-
-
-<section class="content-hub light section">
-  <div class="container">
-    <div class="section-head reveal">
-      <div>
-        <div class="eyebrow">Explore NowLens</div>
-        <h2>Learn it. Read it. Watch it. Keep it.</h2>
-      </div>
-      <p>
-        NowLens is growing beyond courses. Use blogs for practical thinking, demos for visual walkthroughs,
-        and documents for reference guides, architecture notes and downloadable resources.
-      </p>
-    </div>
-
-    <div class="content-hub-grid">
-      <a class="content-hub-card reveal" href="blogs.html">
-        <div class="content-hub-code">BLOGS</div>
-        <h3>Ideas & explainers</h3>
-        <p>ServiceNow AI concepts, product changes, architecture explanations, use cases and practical viewpoints.</p>
-        <span>Read articles →</span>
-      </a>
-
-      <a class="content-hub-card reveal" href="demos.html">
-        <div class="content-hub-code">DEMOS</div>
-        <h3>See AI in action</h3>
-        <p>Short walkthroughs, lab demonstrations, build videos and workflow examples you can embed over time.</p>
-        <span>Watch demos →</span>
-      </a>
-
-      <a class="content-hub-card reveal" href="docs.html">
-        <div class="content-hub-code">DOCS</div>
-        <h3>Reference library</h3>
-        <p>Cheat sheets, diagrams, implementation notes, downloadable PDFs and curated technical references.</p>
-        <span>Browse documents →</span>
-      </a>
-    </div>
   </div>
 </section>
 
